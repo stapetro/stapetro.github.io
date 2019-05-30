@@ -42,7 +42,7 @@ urlimg: 'https://stapetro.github.io/images/'
 
 
 # Logo size is 600x80 pixels
-logo: "logo.png"
+logo: "stapetro_logo.png"
 
 # Plugins
 plugins:
