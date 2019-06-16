@@ -8,12 +8,12 @@
   dropdown:
   - title: "IT Tech"
     url: "/blog/tech/"
-  - title: "Running"
-    url: "/blog/run/"
-  - title: "Trips"
-    url: "/blog/trip/"
-  - title: "Events"
-    url: "/blog/event/"
+#  - title: "Running"
+#    url: "/blog/run/"
+#  - title: "Trips"
+#    url: "/blog/trip/"
+#  - title: "Events"
+#    url: "/blog/event/"
 
 - title: "Search"
   url: "/search/"

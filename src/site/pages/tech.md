@@ -4,7 +4,7 @@ show_meta: false
 title: "Software Engineering Blog"
 subheadline: "IT & Software"
 header:
-   image_fullwidth: "header_unsplash_5.jpg"
+   image_fullwidth: "header_trigrad_devil_throat_20190505_122717_sized.jpg"
 permalink: "/blog/tech/"
 ---
 <ul>
