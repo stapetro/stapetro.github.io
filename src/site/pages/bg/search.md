@@ -1,9 +1,9 @@
 ---
-permalink: /search/
+permalink: /bg/search/
 layout: page
-title: "Search"
+title: "Търси"
 sitemap: false
-lang: en
+lang: bg
 ---
 
 {% include _google_search.html %}

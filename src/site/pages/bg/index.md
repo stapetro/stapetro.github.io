@@ -8,11 +8,11 @@ layout: frontpage
 header:
   image_fullwidth: pirin_20180601_161718_1920_1080.jpg
 
-permalink: /index.html
+permalink: /bg/index.html
 #
 # This is a nasty hack to make the navigation highlight
 # this page as active in the topbar navigation
 #
 homepage: true
-lang: en
+lang: bg
 ---

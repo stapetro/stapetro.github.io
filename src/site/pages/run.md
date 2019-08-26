@@ -6,6 +6,7 @@ subheadline: "Running"
 header:
    image_fullwidth: "header_unsplash_5.jpg"
 permalink: "/blog/run/"
+lang: en
 ---
 <ul>
     {% for post in site.categories.run %}

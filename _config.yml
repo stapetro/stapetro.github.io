@@ -85,6 +85,9 @@ exclude:
     - .idea
 
 
+# -----
+# i18n
+# -----
 # The language setting is used in /includes/header.html for html-settings
 language: 'en'
 

@@ -25,7 +25,7 @@
 
 {% endcomment %}
       <ul class="right">
-        {% for link in site.data.navigation %}
+        {% for link in site.data.navigation[page.lang] %}
 
               {% if link.url contains 'http' %}
                 {% assign domain = '' %}
@@ -68,6 +68,18 @@
         {% endfor %}
         {% comment %}   First loop finished 1   {% endcomment %}
       </ul>
+    <ul class="right">
+    {% for lang in site.data.langs %}
+        {% assign language = lang[1] %}
+        {% if lang[0] != page.lang %}
+            {% if lang[0] != 'en' %}
+        <li><a href="{{ site.url }}{{ site.baseurl }}/{{ lang[0] }}">{{ language.label }} ({{ lang[0] }})</a></li>
+            {% else %}
+        <li><a href="{{ site.url }}{{ site.baseurl }}">{{ language.label }} ({{ lang[0] }})</a></li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </ul>
 {% comment %}
 
     __         ______     _   __            _             __  _
@@ -79,7 +91,7 @@
 
 {% endcomment %}
       <ul class="left">
-        {% for link in site.data.navigation %}
+        {% for link in site.data.navigation[page.lang] %}
 
               {% if link.url contains 'http' %}
                 {% assign domain = '' %}

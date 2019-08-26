@@ -1,0 +1,37 @@
+info_website:
+  en: "About This Site"
+  bg: "За мен"
+more:
+  en: "More ›"
+  bg: "Още ›"
+blog_archive:
+  en: "Blog Archive"
+  bg: "Блог архив"
+next_posts:
+  en: "Next Posts"
+previous_posts:
+  en: "Previous Posts"
+read_more:
+  en: "Read More&nbsp;›"
+next:
+  en: "Next"
+previous:
+  en: "Previous"
+archive:
+  en: "Archive"
+  bg: "Архив"
+breadcrumb_start:
+  en: "Start"
+if_you_are_not_redirected_automatically:
+  en: "If you are not redirected automatically,"
+click_here:
+  en: "click here"
+new_blog_entries:
+  en: "New Blog Articles"
+next_post_in:
+  en: "Next Post in"
+previous_post_in:
+  en: "Previous Post in"
+enter_search_term:
+  en: "Enter search term and hit enter"
+  bg: "Въведи думата, която търсиш и натисни enter"
