@@ -20,7 +20,7 @@ function build() {
     --volume="$PWD:/srv/jekyll" \
     --volume="$PWD/vendor/bundle:/usr/local/bundle" \
     -it jekyll/builder:$JEKYLL_VERSION \
-    bundle exec jekyll build --config _config.yml --host 0.0.0.0
+    bundle exec jekyll build --config _config.yml
 }
 
 serve
