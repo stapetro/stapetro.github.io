@@ -8,10 +8,10 @@
   class: icon-youtube
   title: "Youtube channel"
 
-#- name: Twitter
-#  url: http://twitter.com/phlow
-#  class: icon-twitter
-#  title: "Immer das Neuste von Phlow gibt es auf Twitter"
+- name: Twitter
+  url: http://twitter.com/sipetrov
+  class: icon-twitter
+  title: "The latest from stapetro is always available on Twitter"
 #
 #- name: Mixcloud
 #  url: http://www.mixcloud.com/phlow/
