@@ -1,3 +1,4 @@
+param([String]$actionName="Serve")
 $env:JEKYLL_VERSION = "3.8"
 
 Function Serve
@@ -19,4 +20,4 @@ Function Install
 
 }
 
-Serve
+invoke-expression  "$actionName"
