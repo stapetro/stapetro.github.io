@@ -51,7 +51,7 @@ plugins:
     - jekyll-paginate
 
 timezone: EET
-source: ./src/site
+source: .
 #destination: .
 
 #       ____              _             __  _
