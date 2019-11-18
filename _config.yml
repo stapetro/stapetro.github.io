@@ -280,3 +280,17 @@ asciidoctor:
     source-highlighter: coderay
     coderay-css: style
     icons: font
+
+# Github pages configuration
+# Some configuration settings cannot be changed for GitHub Pages sites.
+#https://help.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll
+lsi: false
+safe: true
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+#source: [your repo's top level directory]
