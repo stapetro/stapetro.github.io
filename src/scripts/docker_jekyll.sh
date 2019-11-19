@@ -9,7 +9,7 @@ function serve() {
     --volume="$PWD:/srv/jekyll" \
     --volume="$PWD/vendor/bundle:/usr/local/bundle" \
     -it jekyll/builder:$JEKYLL_VERSION \
-    bundle exec jekyll serve --config _config.yml,_config_dev.yml
+    bundle exec jekyll serve --incremental --config _config.yml,_config_dev.yml
 }
 
 function build() {
