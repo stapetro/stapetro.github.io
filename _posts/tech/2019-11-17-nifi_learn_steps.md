@@ -54,6 +54,8 @@ I share a tasks' list I covered with Nifi.
 3. Clean invalid cache data when a new XML file is processed.
 4. Saving ES data without disturbing current production users. I leverage ES' alias/index feature.
 5. Create maintenance jobs to clean up old resources.
+6. Invoke CLI tools/scripts.
+7. Consume REST API via HTTP requests.
 
  [1]: https://en.wikipedia.org/wiki/Flow-based_programming
  [2]: https://nifi.apache.org/
