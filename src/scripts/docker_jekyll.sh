@@ -23,4 +23,8 @@ function build() {
     bundle exec jekyll build --config _config.yml
 }
 
-serve
+if [ -z ${1} ]; then
+  serve
+else
+  ${1}
+fi
