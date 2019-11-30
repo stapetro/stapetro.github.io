@@ -44,8 +44,40 @@ I hope this article is the beginning of ongoing series.
 
 # Environment and tools
 1. Official [Apache Nifi][4] docker image runs the system in a single-node execution mode.
-2. Any OS that supports docker.
+
+~~~ bash
+$ sudo docker run --name nifi -p 8080:8080 -d apache/nifi:latest
+~~~
+
+2. Any OS that supports docker. I use Ubuntu.
 3. [Load existing workflow][6] on docker container's startup.
+
+# Configuration
+## Docker
+Tested with **Ubuntu 18.04**.
+
+I had to [change the docker root directory][11] because _/var_ is a small partition on my system. Docker stores its data
+by default in _/var/lib/docker_ directory. The steps are:
+
+~~~ bash
+# Stop docker daemon
+$ sudo service docker stop
+
+# Create new docker root directory
+$ sudo mkdir /opt/docker
+# Copies all existing docker data to the new docker root location
+$ sudo rsync -a /var/lib/docker/ /opt/docker/
+# many 3rd party tools expect docker to be located in /var/lib/docker
+$ sudo ln -s /opt/docker /var/lib/docker
+
+$ sudo service docker start
+$ sudo service docker status
+$ sudo docker info
+# Output
+...
+Docker Root Dir: /opt/docker
+...
+~~~
 
 # Tasks
 I share a tasks' list I covered with Nifi.
@@ -67,3 +99,4 @@ I share a tasks' list I covered with Nifi.
  [8]: https://nifi.apache.org/docs/nifi-docs/html/overview.html
  [9]: https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology
  [10]: https://nifi.apache.org/faq.html
+ [11]: https://stackoverflow.com/questions/52488300/how-to-change-root-dir-of-docker-on-ubuntu-18-04-lts-docker-change-location-of
