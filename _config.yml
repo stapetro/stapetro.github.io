@@ -82,7 +82,9 @@ exclude:
     - vendor
     - stapetro.github.io.iml
     - src/scripts
+    - src/node_modules
     - .idea
+    - .gitignore
 
 
 # -----
