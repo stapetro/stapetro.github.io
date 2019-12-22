@@ -5,3 +5,4 @@ _site/
 *.iml
 vendor
 .bundle
+src/node_modules
