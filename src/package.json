@@ -1,0 +1,36 @@
+{
+  "name": "stapetroblog",
+  "version": "1.0.0",
+  "description": "Features included in stapetro blog posts.",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.5",
+    "@types/jest": "^24.0.24",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10"
+  },
+  "scripts": {
+    "test": "npx jest",
+    "bundle": "npx webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stapetro/stapetro.github.io.git"
+  },
+  "keywords": [
+    "stapetro",
+    "blog",
+    "post",
+    "developer"
+  ],
+  "author": "Staislav Petrov <stanislav.i.petrov@gmail.com> (https://stapetro.github.io)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stapetro/stapetro.github.io/issues"
+  },
+  "homepage": "https://github.com/stapetro/stapetro.github.io#readme"
+}

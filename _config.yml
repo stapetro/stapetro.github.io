@@ -83,6 +83,13 @@ exclude:
     - stapetro.github.io.iml
     - src/scripts
     - src/node_modules
+    - src/main
+    - src/jest.config.js
+    - src/package.json
+    - src/package-lock.json
+    - src/babel.config.js
+    - src/.babelrc
+    - src/webpack.config.js
     - .idea
     - .gitignore
 
