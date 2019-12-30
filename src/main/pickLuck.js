@@ -1,8 +1,8 @@
 class Note {
     /**
-     * 
-     * @param {String} content 
-     * @param {String} author 
+     *
+     * @param {String} content
+     * @param {String} author
      */
     constructor(content, author = undefined) {
         this.content = content;
@@ -10,9 +10,9 @@ class Note {
     }
 
     /**
-     * 
-     * @param {String} content 
-     * @param {String} author 
+     *
+     * @param {String} content
+     * @param {String} author
      */
     static newNote(content, author = undefined) {
         return new Note(content, author);
@@ -32,8 +32,8 @@ class Note {
 
 class NoteTaker {
     /**
-     * 
-     * @param {!Array<Note>} notes 
+     *
+     * @param {!Array<Note>} notes
      */
     constructor(notes) {
         this.notes = notes;
@@ -150,26 +150,15 @@ class NoteTaker {
             Note.newNote('За плахия и колебаещия се, всичко е невъзможно, защото му изглежда така.', 'Сър Уолтър Скот'),
             Note.newNote('Чудесата ще започнат да стават, когато започнете да влагате повече енергия в мечтите си, отколкото в страховете си.', undefined),
             Note.newNote('Човек живее, колкото трябва, и умира, когато се съгласи.', 'Петър Димков'),
-            Note.newNote('Хранете се, за да живеете, а не живейте, за да се храните.', 'Петър Димков')
+            Note.newNote('Хранете се, за да живеете, а не живейте, за да се храните.', 'Петър Димков'),
+            Note.newNote('Ако посоката, в която си се запътил, ти носи радост, не питай какъв ще е пътят. Просто върви!', undefined)
         );
         // NoteTaker.addBogusItems(notes);
         return notes;
     }
 
     /**
-     * 
-     * @param {Array<Note>} notes 
-     */
-    static addBogusItems(notes) {
-        const currLen = notes.length;
-        for (let idx = 0; idx <= 5000; idx++) {
-            const currNote = notes[idx % currLen];
-            notes.push(new Note(currNote.content + ' - ' + idx, currNote.author, currNote.source));
-        }
-    }
-
-    /**
-     * 
+     *
      * @returns {!Note} Randomly-picked note.
      */
     takeNote() {
@@ -183,13 +172,14 @@ class NoteTaker {
 
 export class NoteViewer {
     /**
-     * 
+     * @param {!Object} pJquery Jquery object.
      * @param {!Object} rotateBtn jQuery object.
      * @param {!Object} noteDisplayBox jQuery object.
-     * @param {!number} rotateIntervalMs 
-     * @param {Array<Note>} notes 
+     * @param {!number} rotateIntervalMs
+     * @param {Array<Note>} notes
      */
-    constructor(rotateBtn, noteDisplayBox, rotateIntervalMs = 100, notes = NoteTaker.generateNotes()) {
+    constructor(pJquery, rotateBtn, noteDisplayBox, rotateIntervalMs = 100, notes = NoteTaker.generateNotes()) {
+        this.$ = pJquery;
         this.rotateIntervalMs = rotateIntervalMs;
         this.rotateBtn = rotateBtn;
         this.noteDisplayBox = noteDisplayBox;
@@ -202,6 +192,10 @@ export class NoteViewer {
         this.noteDisplayBox.html(note.html);
     }
 
+    /**
+     * Public.
+     * @return {undefined}
+     */
     startRotate() {
         this.rotateBtnClickHandler = this.pickLuckyNote;
         this.rotateBtnLabel = 'Изтегли';
@@ -243,6 +237,6 @@ export class NoteViewer {
      */
     set rotateBtnClickHandler(handleFn) {
         this.rotateBtn.off('click');
-        this.rotateBtn.click($.proxy(handleFn, this));
+        this.rotateBtn.click(this.$.proxy(handleFn, this));
     }
 }

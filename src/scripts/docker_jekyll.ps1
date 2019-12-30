@@ -18,7 +18,12 @@ Function Install
 {
     docker run --rm -p 4000:4000 --volume="${pwd}:/srv/jekyll" --volume="${pwd}/vendor/bundle:/usr/local/bundle" `
     -it jekyll/builder:$env:JEKYLL_VERSION bundle install --no-deployment
+}
 
+Function Update
+{
+    docker run --rm -p 4000:4000 --volume="${pwd}:/srv/jekyll" --volume="${pwd}/vendor/bundle:/usr/local/bundle" `
+    -it jekyll/builder:$env:JEKYLL_VERSION bundle update --bundler
 }
 
 invoke-expression  "$actionName"
