@@ -6,3 +6,4 @@ _site/
 vendor
 .bundle
 src/node_modules
+src/coverage
