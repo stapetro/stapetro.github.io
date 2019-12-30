@@ -31,15 +31,22 @@
     {% for post in singleLangPosts limit:include.entries offset:include.offset %}
       <li><a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{% if post.subheadline %}{{ post.subheadline }} &middot; {% endif %}<strong>{{ post.title }}</strong></a></li>
     {% endfor %}
+    {% if page.lang != 'en' %}
+      <li class="text-right"><a href="{{ site.url }}{{ site.baseurl }}/{{ page.lang }}/blog/archive/"><strong>{{ site.data.translations.more[page.lang] }}</strong></a></li>
+    {% else %}
       <li class="text-right"><a href="{{ site.url }}{{ site.baseurl }}/blog/archive/"><strong>{{ site.data.translations.more[page.lang] }}</strong></a></li>
-
+    {% endif %}
 
   {% elsif category %}
 
     {% for post in site.categories.[category] limit:include.entries offset:include.offset | where:"lang", page.lang %}
       <li><a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{% if post.subheadline %}{{ post.subheadline }} &middot; {% endif %}<strong>{{ post.title }}</strong></a></li>
     {% endfor %}
+    {% if page.lang != 'en' %}
+      <li class="text-right"><a href="{{ site.url }}{{ site.baseurl }}{{ page.lang }}/blog/archive/"><strong>{{ site.data.translations.more[page.lang] }}</strong></a></li>
+    {% else %}
       <li class="text-right"><a href="{{ site.url }}{{ site.baseurl }}/blog/archive/"><strong>{{ site.data.translations.more[page.lang] }}</strong></a></li>
+    {% endif %}
 
 
   {% elsif tag %}
