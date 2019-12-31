@@ -40,9 +40,19 @@ function verifyInstance(noteViewer, expectedRotateIntervalInMs) {
  * Generates fake notes.
  */
 class NoteGenerator {
-  // eslint-disable-next-line require-jsdoc
+  /**
+   * Creates a fake note.
+   * @param {string} content
+   * @param {string} author
+   * @return {Object} Note object.
+   */
   static newNote(content, author) {
-    return {content, author, html: `${content}<->${author || ''}`};
+    return {
+      content,
+      author,
+      html: `${content}<->${author || ''}`,
+      htmlWithFixedSizedTxt: `fixed ${content.substring(0, 3)}`,
+    };
   }
 
   /**
@@ -50,8 +60,8 @@ class NoteGenerator {
    * @return {{author: *, content: *}[]}
    */
   static generateNotes() {
-    return [this.newNote('note', undefined),
-      this.newNote('note1', 'note1 author')];
+    return [this.newNote('note'.padEnd(10, '*'), undefined),
+      this.newNote('something else 1'.padEnd(10, '*'), 'note1 author')];
   }
 }
 
@@ -100,23 +110,20 @@ describe('NoteViewer API', () => {
     expect(txt).not.toEqual('');
   };
 
+  /* eslint-disable indent */
   /**
    *
    * @param {!String} pNotesBoxHtml
    * @param {!NoteViewer} pNoteViewer
+   * @param {!Function} isNotePresentFn Is present predicate.
    */
-  const assertPickedNoteIsPresent = (pNotesBoxHtml, pNoteViewer) => {
+  const assertCurrentNoteIsPresent = (pNotesBoxHtml, pNoteViewer,
+    isNotePresentFn) => {
+    /* eslint-enable indent */
     const notes = pNoteViewer.noteTaker.notes;
-    const isPickedNotePresent = notes.some((noteElem) => {
-      const hasContent = pNotesBoxHtml.indexOf(noteElem.content) >= 0;
-      let hasAuthor = true;
-      if (noteElem.author) {
-        hasAuthor = pNotesBoxHtml.indexOf(noteElem.author) >= 0;
-      }
-      return hasContent && hasAuthor;
-    });
+    const isNotePresent = isNotePresentFn(notes, pNotesBoxHtml);
     try {
-      expect(isPickedNotePresent).toBe(true);
+      expect(isNotePresent).toBe(true);
     } catch (err) {
       console.error('pNotesBoxHtml', pNotesBoxHtml);
       console.error('notes', notes);
@@ -153,11 +160,17 @@ describe('NoteViewer API', () => {
 
       const actualNotesBoxHtml = notesBox.prop('innerHTML');
       assertNotEmptyString(actualNotesBoxHtml);
-      assertPickedNoteIsPresent(actualNotesBoxHtml, noteViewerObj);
+      const isNotePreviewPresent = (notes, pNotesBoxHtml) =>
+        (notes.some((noteElem) => {
+          return pNotesBoxHtml.indexOf(noteElem.htmlWithFixedSizedTxt) >= 0;
+        }));
+      /* eslint-disable indent */
+      assertCurrentNoteIsPresent(
+        actualNotesBoxHtml, noteViewerObj, isNotePreviewPresent,
+      );
 
       expect(clearTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledTimes(2);
-      /* eslint-disable indent */
       expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function),
         rotateIntervalInMs);
       /* eslint-enable indent */
@@ -172,7 +185,6 @@ describe('NoteViewer API', () => {
     [NoteGenerator.generateNotes()[0]])} | ${'1 no-author-fake'}
     `('NoteViewer pick a lucky note from $condition notes',
     ({newNoteViewerFn}) => {
-      /* eslint-enable indent */
       const noteViewerObj = newNoteViewerFn();
       noteViewerObj.startRotate();
       jest.runOnlyPendingTimers();
@@ -181,7 +193,22 @@ describe('NoteViewer API', () => {
 
       assertNotEmptyString(rotateBtn.prop('innerHTML'));
       assertNotEmptyString(rotateBtn.attr('title'));
+      const isNotePresent = (notes, pNotesBoxHtml) => {
+        return notes.some((noteElem) => {
+          const hasContent = pNotesBoxHtml.indexOf(noteElem.content) >= 0;
+          let hasAuthor = true;
+          if (noteElem.author) {
+            hasAuthor = pNotesBoxHtml.indexOf(noteElem.author) >= 0;
+          }
+          return hasContent && hasAuthor;
+        });
+      };
+      const actualNotesBoxHtml = notesBox.prop('innerHTML');
+      assertCurrentNoteIsPresent(
+        actualNotesBoxHtml, noteViewerObj, isNotePresent,
+      );
       expect(setTimeout).toHaveBeenCalledTimes(2);
       expect(clearTimeout).toHaveBeenCalledTimes(2);
     });
+  /* eslint-enable indent */
 });

@@ -91,6 +91,7 @@ exclude:
     - src/babel.config.js
     - src/.babelrc
     - src/webpack.config.js
+    - src/.eslintrc.js
     - .idea
     - .gitignore
 
