@@ -9,6 +9,8 @@
     "@babel/plugin-transform-modules-commonjs": "^7.7.5",
     "@types/jest": "^24.0.24",
     "babel-jest": "^24.9.0",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
     "jest": "^24.9.0",
     "jquery": "^2.1.1",
     "webpack": "^4.41.4",
@@ -17,7 +19,8 @@
   "scripts": {
     "test": "npx jest",
     "test:coverage": "npx jest --collectCoverage",
-    "bundle": "npx webpack --mode=production"
+    "bundle": "npx webpack --mode=production",
+    "lint": "npx eslint \"main/**\""
   },
   "repository": {
     "type": "git",
