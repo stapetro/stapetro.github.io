@@ -1,3 +1,5 @@
+const TEXT_SIZE = 60;
+
 /**
  * Note entity.
  */
@@ -9,6 +11,9 @@ class Note {
    */
   constructor(content, author = undefined) {
     this.content = content;
+    this.fixedSizedContent = content.length <= TEXT_SIZE ?
+      content.padEnd(TEXT_SIZE, `${content} `) :
+      content.substring(0, TEXT_SIZE);
     this.author = author;
   }
 
@@ -34,6 +39,14 @@ class Note {
     const authorHtml = this.author ? this.author : '';
     const metaDataHtml = `<p>${authorHtml}<p>`;
     return contentHtml + metaDataHtml;
+  }
+
+  /**
+   * Get html representation with fixed-sized text.
+   * @return {string}
+   */
+  get htmlWithFixedSizedTxt() {
+    return `<p>${this.fixedSizedContent}</p>`;
   }
 }
 
@@ -167,6 +180,8 @@ class NoteTaker {
       Note.newNote('Човек живее, колкото трябва, и умира, когато се съгласи.', 'Петър Димков'),
       Note.newNote('Хранете се, за да живеете, а не живейте, за да се храните.', 'Петър Димков'),
       Note.newNote('Ако посоката, в която си се запътил, ти носи радост, не питай какъв ще е пътят. Просто върви!', undefined),
+      Note.newNote('Луд умора няма.', 'Българска поговорка'),
+      Note.newNote('Барабар Петко с мъжете.', 'Българска поговорка'),
     ];
     /* eslint-enable max-len */
   }
@@ -210,12 +225,20 @@ export class NoteViewer {
     this.noteDisplayBox = noteDisplayBox;
     this.noteTaker = new NoteTaker(notes);
     this.timer = null;
+    this.currentNote = null;
+  }
+
+  /**
+   * Displays current note.
+   */
+  displayNote() {
+    this.noteDisplayBox.html(this.currentNote.html);
   }
 
   // eslint-disable-next-line require-jsdoc
-  displayNote() {
-    const note = this.noteTaker.takeNote();
-    this.noteDisplayBox.html(note.html);
+  displayNotePreview() {
+    this.currentNote = this.noteTaker.takeNote();
+    this.noteDisplayBox.html(this.currentNote.htmlWithFixedSizedTxt);
   }
 
   /**
@@ -226,6 +249,7 @@ export class NoteViewer {
     this.rotateBtnClickHandler = this.pickLuckyNote;
     this.rotateBtnLabel = 'Изтегли';
     this.rotateBtnTitle = 'Късметче си вземи';
+    this.currentNote = null;
     this.rotateNotes();
   }
 
@@ -234,7 +258,7 @@ export class NoteViewer {
    */
   rotateNotes() {
     this.timer = window.setTimeout(() => {
-      this.displayNote();
+      this.displayNotePreview();
       window.clearTimeout(this.timer);
       this.rotateNotes();
     }, this.rotateIntervalMs);
@@ -243,6 +267,7 @@ export class NoteViewer {
   // eslint-disable-next-line require-jsdoc
   pickLuckyNote() {
     window.clearTimeout(this.timer);
+    this.displayNote();
     this.rotateBtnClickHandler = this.startRotate;
     this.rotateBtnLabel = 'Старт';
     this.rotateBtnTitle = 'Натисни за следващо късметче';
