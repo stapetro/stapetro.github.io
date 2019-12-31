@@ -84,6 +84,7 @@ exclude:
     - src/scripts
     - src/node_modules
     - src/main
+    - src/coverage
     - src/jest.config.js
     - src/package.json
     - src/package-lock.json
