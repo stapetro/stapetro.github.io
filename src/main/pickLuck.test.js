@@ -69,7 +69,7 @@ describe('NoteViewer.constructor', () => {
   test('NoteViewer.constructor with default params', () => {
     const expectedRotateIntervalInMs = 100;
 
-    const noteViewer = new NoteViewer($, rotateBtn, notesBox);
+    const noteViewer = new NoteViewer(rotateBtn, notesBox);
 
     verifyInstance(noteViewer, expectedRotateIntervalInMs);
   });
@@ -79,7 +79,7 @@ describe('NoteViewer.constructor', () => {
     const notes = NoteGenerator.generateNotes();
 
     /* eslint-disable indent */
-    const noteViewer = new NoteViewer($, rotateBtn, notesBox,
+    const noteViewer = new NoteViewer(rotateBtn, notesBox,
       expectedRotateIntervalInMs, notes);
     /* eslint-enable indent */
 
@@ -95,8 +95,8 @@ describe('NoteViewer API', () => {
 
   beforeEach(() => {
     /* eslint-disable indent */
-    noteViewer = new NoteViewer($, rotateBtn, notesBox,
-      expectedRotateIntervalInMs, NoteGenerator.generateNotes());
+    noteViewer = new NoteViewer(rotateBtn, notesBox, expectedRotateIntervalInMs,
+      NoteGenerator.generateNotes());
     /* eslint-enable indent */
     jest.useFakeTimers();
   });
@@ -136,9 +136,8 @@ describe('NoteViewer API', () => {
   test.each`
     newNoteViewerFn | rotateIntervalInMs | condition
     ${() => noteViewer} | ${expectedRotateIntervalInMs} | ${'2 fake'}
-    ${() => new NoteViewer($, rotateBtn, notesBox)} | ${100} | ${'all production'}
-    ${() => new NoteViewer($, rotateBtn, notesBox, expectedRotateIntervalInMs,
-    [NoteGenerator.generateNotes()[0]])} | ${expectedRotateIntervalInMs} | ${'1 no-author-fake'}
+    ${() => new NoteViewer(rotateBtn, notesBox)} | ${100} | ${'all production'}
+    ${() => new NoteViewer(rotateBtn, notesBox, expectedRotateIntervalInMs, [NoteGenerator.generateNotes()[0]])} | ${expectedRotateIntervalInMs} | ${'1 no-author-fake'}
     `('NoteViewer.startRotate with $condition notes',
     ({newNoteViewerFn, rotateIntervalInMs}) => {
       /* eslint-enable indent */
@@ -180,8 +179,8 @@ describe('NoteViewer API', () => {
   test.each`
     newNoteViewerFn | condition
     ${() => noteViewer} | ${'2 fake'}
-    ${() => new NoteViewer($, rotateBtn, notesBox)} | ${'all production'}
-     ${() => new NoteViewer($, rotateBtn, notesBox, expectedRotateIntervalInMs,
+    ${() => new NoteViewer(rotateBtn, notesBox)} | ${'all production'}
+     ${() => new NoteViewer(rotateBtn, notesBox, expectedRotateIntervalInMs,
     [NoteGenerator.generateNotes()[0]])} | ${'1 no-author-fake'}
     `('NoteViewer pick a lucky note from $condition notes',
     ({newNoteViewerFn}) => {

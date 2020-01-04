@@ -92,6 +92,7 @@ exclude:
     - src/.babelrc
     - src/webpack.config.js
     - src/.eslintrc.js
+    - src/.browserslistrc
     - .idea
     - .gitignore
     - .travis.yml

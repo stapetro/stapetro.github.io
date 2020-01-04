@@ -182,6 +182,15 @@ class NoteTaker {
       Note.newNote('Ако посоката, в която си се запътил, ти носи радост, не питай какъв ще е пътят. Просто върви!', undefined),
       Note.newNote('Луд умора няма.', 'Българска поговорка'),
       Note.newNote('Барабар Петко с мъжете.', 'Българска поговорка'),
+      Note.newNote('Щастието е само на една мисъл разстояние.', undefined),
+      Note.newNote('Слабите хора чакат да настъпи благоприятно обстоятелство, силните го създават.', undefined),
+      Note.newNote('Не се учи как да станеш богат, учи се как да станеш щастлив.', undefined),
+      Note.newNote('Кефът цена няма, ама струва пари.', 'Бат\' Жоро'),
+      Note.newNote('Насила хубост не става.', 'Българска поговорка'),
+      Note.newNote('Кое е по-важно за успеха - талантът или труда? А кое колело на велосипеда е по-важно - предното или задното?. | ' +
+        'What is more important for success - the talent or the labor? And which wheel of the bicycle is more important - the front or the rear one?', undefined),
+      Note.newNote('Можем ли да освободим света от злосторници? Вероятно толкова, колкото и да го населим със Светци. | ' +
+        'Can we rid the world of evildoers? Probably as much as to populate it with saints.', 'Тома Томов | Toma Tomov'),
     ];
     /* eslint-enable max-len */
   }
@@ -210,16 +219,14 @@ class NoteTaker {
 export class NoteViewer {
   /* eslint-disable indent */
   /**
-   * @param {!Object} pJquery Jquery object.
    * @param {!Object} rotateBtn jQuery object.
    * @param {!Object} noteDisplayBox jQuery object.
    * @param {!number} rotateIntervalMs
    * @param {Array<Note>} notes
    */
-  constructor(pJquery, rotateBtn, noteDisplayBox,
-    rotateIntervalMs = 100, notes = NoteTaker.generateNotes()) {
+  constructor(rotateBtn, noteDisplayBox, rotateIntervalMs = 100,
+    notes = NoteTaker.generateNotes()) {
     // eslint-enable indent
-    this.$ = pJquery;
     this.rotateIntervalMs = rotateIntervalMs;
     this.rotateBtn = rotateBtn;
     this.noteDisplayBox = noteDisplayBox;
@@ -243,9 +250,10 @@ export class NoteViewer {
 
   /**
    * Public.
+   * @param {Object} event DOM event.
    * @return {undefined}
    */
-  startRotate() {
+  startRotate(event= undefined) {
     this.rotateBtnClickHandler = this.pickLuckyNote;
     this.rotateBtnLabel = 'Изтегли';
     this.rotateBtnTitle = 'Късметче си вземи';
@@ -264,8 +272,12 @@ export class NoteViewer {
     }, this.rotateIntervalMs);
   }
 
-  // eslint-disable-next-line require-jsdoc
-  pickLuckyNote() {
+  /**
+   * Private.
+   * @param {Object} event DOM event.
+   * @return {undefined}
+   */
+  pickLuckyNote(event) {
     window.clearTimeout(this.timer);
     this.displayNote();
     this.rotateBtnClickHandler = this.startRotate;
@@ -292,6 +304,6 @@ export class NoteViewer {
    */
   set rotateBtnClickHandler(handleFn) {
     this.rotateBtn.off('click');
-    this.rotateBtn.click(this.$.proxy(handleFn, this));
+    this.rotateBtn.click(handleFn.bind(this));
   }
 }
