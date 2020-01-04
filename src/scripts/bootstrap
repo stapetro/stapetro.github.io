@@ -4,3 +4,6 @@ set -e
 
 gem install bundler
 bundle install
+
+echo "Install dependencies..."
+(cd src && npm install)
