@@ -1,13 +1,28 @@
 language: ruby
-cache: bundler
+cache:
+  bundler: true
+  directories:
+    - src/node_modules
+    - src/.eslintcache
 rvm:
   - 2.6
 
-before_install: gem update --system
+before_install:
+  - gem update --system
 install: src/scripts/bootstrap
 script: src/scripts/cibuild
 
 env:
   matrix:
     - JEKYLL_VERSION="~> 3.8.0"
-#    - JEKYLL_VERSION=">= 4.0.0.pre.alpha1"
+    #    - JEKYLL_VERSION=">= 4.0.0.pre.alpha1"
+    include:
+      - language: node_js
+        node_js:
+          - 12.14.0
+#        before_install:
+#          - cd daemon/frontend
+#        install:
+#          - yarn install
+#        script:
+#          - yarn test
