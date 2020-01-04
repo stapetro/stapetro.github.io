@@ -6,7 +6,7 @@ echo "ES linting..."
 (cd src && npm run lint)
 
 echo "Testing..."
-(cd src && npm run test)
+(cd src && npm test)
 
 echo "Bundling..."
 (cd src && npm run bundle)
