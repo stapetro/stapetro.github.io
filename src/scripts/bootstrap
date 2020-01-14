@@ -5,4 +5,4 @@ set -e
 gem install bundler
 bundle install
 
-#(cd src && npm ci)
+(cd src && npm ci)
