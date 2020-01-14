@@ -4,12 +4,9 @@ set -e
 
 echo "ES linting..."
 (cd src && npm run lint)
-
 echo "Testing..."
 (cd src && npm test)
-
 echo "Bundling..."
 (cd src && npm run bundle)
-
 echo "Building the site..."
 bundle exec jekyll build
