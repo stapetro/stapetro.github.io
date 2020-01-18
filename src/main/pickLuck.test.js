@@ -137,7 +137,9 @@ describe('NoteViewer API', () => {
     newNoteViewerFn | rotateIntervalInMs | condition
     ${() => noteViewer} | ${expectedRotateIntervalInMs} | ${'2 fake'}
     ${() => new NoteViewer(rotateBtn, notesBox)} | ${100} | ${'all production'}
-    ${() => new NoteViewer(rotateBtn, notesBox, expectedRotateIntervalInMs, [NoteGenerator.generateNotes()[0]])} | ${expectedRotateIntervalInMs} | ${'1 no-author-fake'}
+    ${() => new NoteViewer(rotateBtn, notesBox, expectedRotateIntervalInMs,
+    [NoteGenerator.generateNotes()[0]])}| ${expectedRotateIntervalInMs}
+      | ${'1 no-author-fake'}
     `('NoteViewer.startRotate with $condition notes',
     ({newNoteViewerFn, rotateIntervalInMs}) => {
       /* eslint-enable indent */
@@ -151,7 +153,7 @@ describe('NoteViewer API', () => {
 
       expect(setTimeout).toHaveBeenCalledTimes(1);
       /* eslint-disable indent */
-      expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function),
+      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function),
         rotateIntervalInMs);
       /* eslint-enable indent */
 
