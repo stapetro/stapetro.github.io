@@ -191,6 +191,15 @@ class NoteTaker {
         'What is more important for success - the talent or the labor? And which wheel of the bicycle is more important - the front or the rear one?', undefined),
       Note.newNote('Можем ли да освободим света от злосторници? Вероятно толкова, колкото и да го населим със Светци. | ' +
         'Can we rid the world of evildoers? Probably as much as to populate it with saints.', 'Тома Томов | Toma Tomov'),
+      Note.newNote('Човек е щастлив, когато притежава това, което сам обича, а не това, което другите харесват.', undefined),
+      Note.newNote('Животът е твърде кратък, за да вършим неща, които не обичаме.', undefined),
+      Note.newNote('Никога не е късно да бъдеш този, който си можел да станеш.', 'Джордж Елиът | George Eliot'),
+      Note.newNote('Скучае само онзи, който няма за какво да разговаря със себе си.', undefined),
+      Note.newNote('Всяко препядствие е нова възможност. Всяко препядствие е проверка!', undefined),
+      Note.newNote('Нищо велико не е постигнато без ентусиазъм.', 'Ралф Уолдо Емерсон'),
+      Note.newNote('Когато ласкаеш някого, той се възхищава от добрият ти вкус.', 'Георг Лихтенберг'),
+      Note.newNote('Мотивацията почти винаги е по-важна от простия талант.', 'Норман Августин'),
+      Note.newNote('Където и да отиваш, отивай с цялото си сърце.', undefined),
     ];
     /* eslint-enable max-len */
   }
@@ -253,7 +262,7 @@ export class NoteViewer {
    * @param {Object} event DOM event.
    * @return {undefined}
    */
-  startRotate(event= undefined) {
+  startRotate(event = undefined) {
     this.rotateBtnClickHandler = this.pickLuckyNote;
     this.rotateBtnLabel = 'Изтегли';
     this.rotateBtnTitle = 'Късметче си вземи';
