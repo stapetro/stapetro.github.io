@@ -4,27 +4,54 @@
 *  edit `_data/navigation.yml`.
 *
 {% endcomment %}
-<div id="navigation" class="sticky">
-  <nav class="top-bar" role="navigation" data-topbar>
-    <ul class="title-area">
-      <li class="name">
-      <h1 class="show-for-small-only"><a href="{{ site.url }}{{ site.baseurl }}" class="icon-tree"> {{ site.title }}</a></h1>
-    </li>
-       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Nav</span></a></li>
-    </ul>
-    <section class="top-bar-section">
-{% comment %}
+<div id="navigation" class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
+            <!--li class="menu-text"><a href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a></li-->
+            {% for link in site.data.navigation[page.lang] %}
 
-    ____  _       __    __     _   __            _             __  _
-   / __ \(_)___ _/ /_  / /_   / | / /___ __   __(_)___ _____ _/ /_(_)___  ____
-  / /_/ / / __ `/ __ \/ __/  /  |/ / __ `/ | / / / __ `/ __ `/ __/ / __ \/ __ \
- / _, _/ / /_/ / / / / /_   / /|  / /_/ /| |/ / / /_/ / /_/ / /_/ / /_/ / / / /
-/_/ |_/_/\__, /_/ /_/\__/  /_/ |_/\__,_/ |___/_/\__, /\__,_/\__/_/\____/_/ /_/
-        /____/                                 /____/
+            {% if link.url contains 'http' %}
+            {% assign domain = '' %}
+            {% elsif link.url == '#' %}
+            {% assign domain = '' %}
+            {% else %}
+            {% assign domain = site.url %}
+            {% endif %}
 
-{% endcomment %}
-      <ul class="right">
+            {% comment %}   If there are links for left side begin   {% endcomment %}
+            {% if link.side == 'left' %}
+
+            {% comment %}   If left side WITHOUT dropdown menu do   {% endcomment %}
+            {% if link.dropdown == nil %}
+            <li{% if link.url == page.url %} class="is-active"{% elsif page.homepage == true and link.url == '/' %} class="is-active"{% endif %}><a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank"{% endif %}>{{ link.title | escape }}</a></li>
+
+            {% comment %}   If left side WITH dropdown menu do   {% endcomment %}
+            {% else %}
+
+            <li class="has-submenu{% if link.url == page.url %} is-active{% endif %}">
+                <a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank"{% endif %}>{{ link.title | escape }}</a>
+
+                <ul class="submenu menu vertical" data-submenu>
+                    {% for dropdown_link in link.dropdown %}
+
+                    {% if dropdown_link.url contains 'http' %}
+                    {% assign domain = '' %}
+                    {% else %}
+                    {% assign domain = site.url %}
+                    {% endif %}
+
+                    <li><a {% if dropdown_link.class %}class="{{dropdown_link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ dropdown_link.url }}"{% if dropdown_link.url contains 'http' %} target="_blank"{% endif %}>{{ dropdown_link.title | escape }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% comment %}   Second loop finished   {% endcomment %}
+        </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu vertical medium-horizontal expanded" data-responsive-menu="drilldown medium-dropdown">
         {% for link in site.data.navigation[page.lang] %}
 
               {% if link.url contains 'http' %}
@@ -39,17 +66,15 @@
           {% if link.side == 'right' %}
             {% comment %}   If right side WITHOUT dropdown menu do   {% endcomment %}
             {% if link.dropdown == nil %}
-              <li class="divider"></li>
-              <li{% if link.url == page.url %} class="active"{% elsif page.homepage == true and link.url == '/' %} class="active"{% endif %}><a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank"{% endif %}>{{ link.title | escape }}</a></li>
+              <li{% if link.url == page.url %} class="is-active"{% elsif page.homepage == true and link.url == '/' %} class="is-active"{% endif %}><a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank"{% endif %}>{{ link.title | escape }}</a></li>
 
             {% comment %}   If right side WITH dropdown menu do   {% endcomment %}
             {% else %}
 
-              <li class="divider"></li>
-              <li class="has-dropdown{% if link.url == page.url %} active{% endif %}">
+              <li class="has-submenu">
                 <a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank"{% endif %}>{{ link.title | escape }}</a>
 
-                  <ul class="dropdown">
+                  <ul class="submenu menu vertical" data-submenu>
                     {% for dropdown_link in link.dropdown %}
 
                       {% if dropdown_link.url contains 'http' %}
@@ -61,80 +86,26 @@
                       <li><a {% if dropdown_link.class %}class="{{dropdown_link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ dropdown_link.url }}"{% if dropdown_link.url contains 'http' %} target="_blank"{% endif %}>{{ dropdown_link.title | escape }}</a></li>
                     {% endfor %}
                   </ul>
-
               </li>
             {% endif %}
           {% endif %}
         {% endfor %}
         {% comment %}   First loop finished 1   {% endcomment %}
-      </ul>
-    <ul class="right">
-    {% for lang in site.data.langs %}
+      {% for lang in site.data.langs %}
         {% assign language = lang[1] %}
         {% if lang[0] != page.lang %}
             {% if lang[0] != 'en' %}
-        <li><a href="{{ site.url }}{{ site.baseurl }}/{{ lang[0] }}">{{ language.label }} ({{ lang[0] }})</a></li>
+          <li><a href="{{ site.url }}{{ site.baseurl }}/{{ lang[0] }}">{{ language.label }} ({{ lang[0] }})</a></li>
             {% else %}
-        <li><a href="{{ site.url }}{{ site.baseurl }}">{{ language.label }} ({{ lang[0] }})</a></li>
+          <li><a href="{{ site.url }}{{ site.baseurl }}">{{ language.label }} ({{ lang[0] }})</a></li>
             {% endif %}
         {% endif %}
-    {% endfor %}
-    </ul>
-{% comment %}
-
-    __         ______     _   __            _             __  _
-   / /   ___  / __/ /_   / | / /___ __   __(_)___ _____ _/ /_(_)___  ____
-  / /   / _ \/ /_/ __/  /  |/ / __ `/ | / / / __ `/ __ `/ __/ / __ \/ __ \
- / /___/  __/ __/ /_   / /|  / /_/ /| |/ / / /_/ / /_/ / /_/ / /_/ / / / /
-/_____/\___/_/  \__/  /_/ |_/\__,_/ |___/_/\__, /\__,_/\__/_/\____/_/ /_/
-                                          /____/
-
-{% endcomment %}
-      <ul class="left">
-        {% for link in site.data.navigation[page.lang] %}
-
-              {% if link.url contains 'http' %}
-                {% assign domain = '' %}
-              {% elsif link.url == '#' %}
-                {% assign domain = '' %}
-              {% else %}
-                {% assign domain = site.url %}
-              {% endif %}
-
-          {% comment %}   If there are links for left side begin   {% endcomment %}
-          {% if link.side == 'left' %}
-
-            {% comment %}   If left side WITHOUT dropdown menu do   {% endcomment %}
-            {% if link.dropdown == nil %}
-              <li{% if link.url == page.url %} class="active"{% elsif page.homepage == true and link.url == '/' %} class="active"{% endif %}><a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank"{% endif %}>{{ link.title | escape }}</a></li>
-              <li class="divider"></li>
-
-            {% comment %}   If left side WITH dropdown menu do   {% endcomment %}
-            {% else %}
-
-              <li class="has-dropdown{% if link.url == page.url %} active{% endif %}">
-                <a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank"{% endif %}>{{ link.title | escape }}</a>
-
-                  <ul class="dropdown">
-                    {% for dropdown_link in link.dropdown %}
-
-                      {% if dropdown_link.url contains 'http' %}
-                        {% assign domain = '' %}
-                        {% else %}
-                        {% assign domain = site.url %}
-                      {% endif %}
-
-                      <li><a {% if dropdown_link.class %}class="{{dropdown_link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ dropdown_link.url }}"{% if dropdown_link.url contains 'http' %} target="_blank"{% endif %}>{{ dropdown_link.title | escape }}</a></li>
-                    {% endfor %}
-                  </ul>
-
-              </li>
-              <li class="divider"></li>
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-        {% comment %}   Second loop finished   {% endcomment %}
+      {% endfor %}
       </ul>
-    </section>
-  </nav>
-</div><!-- /#navigation -->
+    </div>
+</div>
+<div class="title-bar" data-responsive-toggle="navigation" data-hide-for="medium">
+    <button class="menu-icon" type="button" data-toggle></button>
+    <div class="title-bar-title">{{ site.title }}</div>
+</div>
+<!-- /#navigation -->

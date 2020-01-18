@@ -1,14 +1,16 @@
 {% if page.mediaplayer == true %}
-<script defer>
-$('audio,video').mediaelementplayer();
-</script>
+<script defer src="{{ url }}/assets/js/mediaElementSetup.js"></script>
 {% endif %}
 
 <script src="{{ url }}/assets/js/modernizr.min.js"></script>
-<script src="{{ site.url }}{{ site.baseurl }}/assets/js/javascript.min.js"></script>
+{% comment %}
+#  Change to script type=module and move to header?
+#
+{% endcomment %}
+<script src="{{ site.url }}{{ site.baseurl }}/assets/js/index.js"></script>
 
 {% if page.header.image_fullwidth %}
-<script async type="module">
+<script defer type="module">
     $("#masthead").backstretch("{{ site.urlimg }}{{ page.header.image_fullwidth }}", {fade: 700});
     $("#masthead-with-text").backstretch("{{ site.urlimg }}{{ page.header.image_fullwidth }}", {fade: 700});
 </script>
@@ -21,7 +23,7 @@ $('audio,video').mediaelementplayer();
 #
 {% endcomment %}
 {% if site.tawkto_embed_uri and page.tawkto == true %}
-<script>
+<script defer>
 var $_Tawk_API={},$_Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -43,6 +45,7 @@ s0.parentNode.insertBefore(s1,s0);
 
   gtag('config', '{{ site.google_analytics_tracking_id }}');
 </script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
 <script defer src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 <script defer>
 window.cookieconsent.initialise({
