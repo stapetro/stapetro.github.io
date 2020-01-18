@@ -16,12 +16,6 @@ tags:
 # Styling
 #
 header: no
-image:
-    title: mediaplayer_js-title.jpg
-    thumb: mediaplayer_js-thumb.jpg
-    homepage: mediaplayer_js-home.jpg
-    caption: Photo by Corey Blaz
-    caption_url: https://blaz.photography/
 mediaplayer: true
 lang: en
 lang-ref: nifiKnowHow
@@ -35,29 +29,22 @@ mediaplayer: true
 
 To use the player just use some HTML5-magic like...
 
+<audio src="http://archive.org/download/music_from_all_around_the_world/02._music_from_all_around_the_world_-_the_black_atlantic_-_dandelion.mp3" type="audio/mp3" controls="controls"></audio>
+
 {% highlight html %}
-<audio src="http://path-to-file.com/music.mp3" type="audio/mp3" controls="controls"></audio>
+<audio src="http://archive.org/download/music_from_all_around_the_world/02._music_from_all_around_the_world_-_the_black_atlantic_-_dandelion.mp3" type="audio/mp3" controls="controls"></audio>
 {% endhighlight %}
 
-All possible functions and how to use *mediaelement.js* is well-documented on the [players website][1].
+{% highlight html %}
+<video id="player1_html5" width="640" height="360" preload="none" style="max-width: 100%; width: 750px; height: 421.875px;" poster="images/big_buck_bunny.jpg" playsinline="" webkit-playsinline="" src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4">
+                            <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
+                            <track src="dist/mediaelement.vtt" srclang="en" label="English" kind="subtitles" type="text/vtt">
+                        </video>
+{% endhighlight %}
 
-
-
-## »Music From All Around The World«
-
-[»Music From All Around The World«][5] is a compilation curated by Jeannette Corneille and Moritz "mo." Sauer for [Phlow-Magazine.com][4]. Cover [Artwork designed by Jeannette Corneille][1]. All tracks were released under a [creative commons licence][2].
-
-### B-Ju - »Philly Run«
-
+<video width="320" height="240" controls="controls" preload="none" poster="http://dwdemo.butlerccwebdev.net/html5-video/media/bigbuckbunny-poster.jpg">
+	<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
+</video>
 
 
  [1]: http://mediaelementjs.com/
- [2]: http://jcorneille.de/
- [3]: www.creativecommons.org/licenses/by-nc-nd/3.0/
- [4]: http://phlow-magazine.com/
- [5]: https://archive.org/details/music_from_all_around_the_world
- [6]: #
- [7]: #
- [8]: #
- [9]: #
- [10]: #

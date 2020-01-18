@@ -93,6 +93,7 @@ exclude:
     - src/webpack.config.js
     - src/.eslintrc.js
     - src/.browserslistrc
+    - src/modernizr-config.json
     - .idea
     - .gitignore
     - .travis.yml
@@ -222,7 +223,10 @@ disqus_shortname: stapetrospace
 #
 
 sass:
-    sass_dir : _sass
+    load_paths:
+      - _sass
+      - src/node_modules/foundation-sites/scss
+      - src/node_modules/motion-ui
     style    : :compressed
 
 

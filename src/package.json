@@ -11,10 +11,17 @@
     "babel-jest": "^24.9.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
+    "foundation-sites": "^6.6.1",
+    "imports-loader": "^0.8.0",
     "jest": "^24.9.0",
-    "jquery": "^2.1.1",
+    "jquery": "^3.4.1",
+    "jquery-backstretch": "^2.1.18",
+    "mediaelement": "^4.2.14",
+    "modernizr": "^3.8.0",
+    "motion-ui": "^2.0.3",
     "webpack": "^4.41.4",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "what-input": "^5.2.6"
   },
   "scripts": {
     "test": "npx jest",
