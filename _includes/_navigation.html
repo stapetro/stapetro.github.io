@@ -4,7 +4,9 @@
 *  edit `_data/navigation.yml`.
 *
 {% endcomment %}
-<div id="navigation" class="top-bar">
+<div class="top-bar-container" data-sticky-container>
+<div class="sticky sticky-topbar" data-sticky data-options="anchor: top-of-page; marginTop: 0; stickyOn: small;">
+    <div id="navigation" class="top-bar">
     <div class="top-bar-left">
         <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
             <!--li class="menu-text"><a href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a></li-->
@@ -104,8 +106,9 @@
       </ul>
     </div>
 </div>
-<div class="title-bar" data-responsive-toggle="navigation" data-hide-for="medium">
-    <button class="menu-icon" type="button" data-toggle></button>
-    <div class="title-bar-title">{{ site.title }}</div>
+    <div class="title-bar" data-responsive-toggle="navigation" data-hide-for="medium">
+        <button class="menu-icon" type="button" data-toggle></button>
+        <div class="title-bar-title">{{ site.title }}</div>
+    </div>
 </div>
-<!-- /#navigation -->
+</div>

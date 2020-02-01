@@ -58,7 +58,7 @@ format: frontpage
 {% unless site.posts == empty %}
 <div class="grid-container">
     {% assign singleLangPosts = site.posts | where:"lang", page.lang %}
-    <div class="grid-x grid-margin-x">
+    <div class="grid-x grid-margin-x grid-padding-y">
         <div class="cell">
             {% for post in singleLangPosts limit:1 %}
             {% if post.image.homepage %}
@@ -110,8 +110,8 @@ format: frontpage
 <div class="grid-x">
     {{ content }}
 </div>
-<div id="up-to-top" class="grid-x grid-margin-x">
-    <div class="cell large-11 small-12" style="text-align: right;">
+<div id="up-to-top" class="grid-x">
+    <div class="cell large-11 small-12 text-right">
         <a class="iconfont" href="#top-of-page">&#xf108;</a>
     </div>
 </div>
