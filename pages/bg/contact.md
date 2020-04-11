@@ -10,5 +10,5 @@ lang: bg
 <form method="POST" action="https://formspree.io/stanislav.i.petrov@gmail.com">
   <input type="email" name="email" placeholder="Твоят мейл">
   <textarea name="message" placeholder="Добави съобщение"></textarea>
-  <button type="submit">Изпрати</button>
+  <button class="button submit">Изпрати</button>
 </form>

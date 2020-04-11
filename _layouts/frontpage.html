@@ -93,8 +93,10 @@ format: frontpage
 
 
         <div class="cell medium-6">
+        {% if singleLangPosts.size > 1 %}
             <p><strong>{{ site.data.translations.more[page.lang] }}</strong></p>
             {% include list-posts entries='3' offset='1' %}
+        {% endif %}
         </div>
     </div>
 </div>
@@ -109,9 +111,4 @@ format: frontpage
 
 <div class="grid-x">
     {{ content }}
-</div>
-<div id="up-to-top" class="grid-x">
-    <div class="cell large-11 small-12 text-right">
-        <a class="iconfont" href="#top-of-page">&#xf108;</a>
-    </div>
 </div>
