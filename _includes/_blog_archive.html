@@ -1,21 +1,28 @@
-<div id="blog-index" class="row">
-    <div class="small-12 columns t30">
+<div id="blog-index" class="grid-x align-center">
+    <div class="cell large-6">
         <h1>{{ page.title }}</h1>
         {% if page.teaser %}<p class="teaser">{{ page.teaser }}</p>{% endif %}
 
-        <dl class="accordion" data-accordion>
+        <ul class="accordion" data-accordion data-allow-all-closed="true" data-deep-link="true"
+            data-deep-link-smudge="true" data-deep-link-smudge-delay="600" id="deeplinked-accordion-with-smudge">
             {% assign counter = 1 %}
             {% assign singleLangPosts = site.posts | where:"lang", page.lang %}
             {% for post in singleLangPosts limit:100 %}
-            <dd class="accordion-navigation">
-                <a href="#panel{{ counter }}"><span class="iconfont"></span> {% if post.subheadline %}{{ post.subheadline }} › {% endif %}<strong>{{ post.title }}</strong></a>
-                <div id="panel{{ counter }}" class="content">
-                    {% if post.meta_description %}{{ post.meta_description | strip_html | escape }}{% elsif post.teaser %}{{ post.teaser | strip_html | escape }}{% endif %}
-                    <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" title="{{ post.title | escape_once }}"><strong>{{ site.data.translations.read_more[page.lang] }}</strong></a><br><br>
+            <li class="accordion-item" data-accordion-item>
+                <a href="#panel{{ counter }}" class="accordion-title">
+                    <span class="iconfont"></span> {% if post.subheadline %}{{ post.subheadline }} › {% endif %}<strong>{{
+                    post.title }}</strong>
+                </a>
+                <div id="panel{{ counter }}" class="accordion-content" data-tab-content>
+                    <p>{% if post.meta_description %}{{ post.meta_description | strip_html | escape }}{% elsif
+                        post.teaser %}{{ post.teaser | strip_html | escape }}{% endif %}</p>
+                    <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
+                       title="{{ post.title | escape_once }}"><strong>{{ site.data.translations.read_more[page.lang]
+                        }}</strong></a><br><br>
                 </div>
-            </dd>
+            </li>
             {% assign counter=counter | plus:1 %}
             {% endfor %}
-        </dl>
-    </div><!-- /.small-12.columns -->
-</div><!-- /.row -->
+        </ul>
+    </div>
+</div>
