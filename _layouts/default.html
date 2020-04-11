@@ -13,7 +13,11 @@ layout: compress
 
 	{% include _masthead.html %}
 	{{ content }}
-
+	<div id="up-to-top" class="grid-x">
+		<div class="cell large-11 small-12 text-right">
+			<a class="iconfont" href="#top-of-page">&#xf108;</a>
+		</div>
+	</div>
 	{% unless page.skip_boilerplate %}
 	{% include _footer.html %}
 	{% endunless %}

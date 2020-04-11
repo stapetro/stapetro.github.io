@@ -136,7 +136,7 @@
 ------------------------------------------------------------------- */
 
 #up-to-top {
-  padding: 160px 0 10px 0;
+  padding: 20px 0 10px 0;
 }
 #up-to-top a {
   font-size: 24px;
@@ -386,3 +386,5 @@ $subfooter-color: scale-color($dark-gray, $lightness: -10%);
   margin: 0;
   text-transform: uppercase;
 }
+
+.pr20 { padding-right: 20px !important; }
