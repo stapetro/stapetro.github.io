@@ -377,3 +377,12 @@ $subfooter-color: scale-color($dark-gray, $lightness: -10%);
 .sticky-topbar {
   width: 100%;
 }
+
+/* Typography for Articles
+------------------------------------------------------------------- */
+
+.subheadline {
+  font-size: rem-calc(16);
+  margin: 0;
+  text-transform: uppercase;
+}

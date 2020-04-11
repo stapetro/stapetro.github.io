@@ -1,17 +1,27 @@
 {% comment %}
-*
-*  http://stackoverflow.com/questions/9612235/what-are-some-good-ways-to-implement-breadcrumbs-on-a-jekyll-site
-*
+* https://get.foundation/sites/docs/breadcrumbs.html
+* https://developers.google.com/search/docs/data-types/breadcrumb
 {% endcomment %}
 
-<nav class="breadcrumbs" role="menubar" aria-label="breadcrumbs">
- <a href="{{ site.url }}{{ site.baseurl }}">{{ site.data.translations.breadcrumb_start[page.lang] }}</a>
- {% assign crumbs = page.url | split: '/' %}
-   {% for crumb in crumbs offset: 1 %}
-    {% if forloop.last %}
-        <a class="current">{{ page.title }}</a>
-    {% else %}
-        <a href="{{ site.url }}{{ site.baseurl }}{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}">{{ crumb | replace:'-',' ' }}</a>
-    {% endif %}
-  {% endfor %}
+<nav aria-label="You are here:" role="navigation">
+    <ol class="breadcrumbs" vocab="https://schema.org/" typeof="BreadcrumbList">
+        <li property="itemListElement" typeof="ListItem">
+            <a property="item" typeof="WebPage" href="{{ site.url }}{{ site.baseurl }}">
+                <span property="name">{{ site.data.translations.breadcrumb_start[page.lang] }}</span></a>
+            <meta property="position" content="1">
+        </li>
+        {% assign crumbs = page.url | split: '/' %}
+        {% for crumb in crumbs offset: 1 %}
+        {% if forloop.last %}
+        <li class="disabled" property="itemListElement" typeof="ListItem">
+            <span property="name">{{ page.title }}</span>
+        {% else %}
+        <li property="itemListElement" typeof="ListItem">
+            <a property="item" typeof="WebPage" href="{{ site.url }}{{ site.baseurl }}{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}">
+                <span property="name">{{ crumb | replace:'-',' ' }}</span></a>
+        {% endif %}
+        <meta property="position" content="{{ forloop.index | plus: 1 }}">
+        </li>
+        {% endfor %}
+    </ol>
 </nav>
