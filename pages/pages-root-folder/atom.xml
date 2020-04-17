@@ -2,10 +2,11 @@
 layout: null
 title: "Atom Feed"
 permalink: /atom.xml
+lang: en
+lang-ref: feed-xml-atom
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="{{ site.baseurl }}/assets/xslt/atom.xslt" ?>
-<?xml-stylesheet type="text/css" href="{{ site.baseurl }}/assets/css/atom.css" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>{{ site.url }}{{ site.baseurl }}/</id>
 	<title>{{ site.title | xml_escape }}</title>
@@ -34,8 +35,8 @@ permalink: /atom.xml
 	<link href="{{ site.url }}{{ site.baseurl }}/" rel="alternate" type="text/html" />
 
 	<generator uri="http://jekyllrb.com" version="{{ jekyll.version }}">Jekyll</generator>
-
-	{% for post in site.posts limit: 10 %}
+	{% assign singleLangPosts = site.posts | where:"lang", page.lang %}
+	{% for post in singleLangPosts limit: 10 %}
 		<entry>
 			<id>{{ site.url }}{{ site.baseurl }}{{ post.url }}</id>
 			<title>{{ post.title | strip_html | strip_newlines | xml_escape }}</title>

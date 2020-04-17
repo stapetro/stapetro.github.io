@@ -10,7 +10,7 @@ const createLuckyHtml = () => (
     <p>
         <button type="button" id="rotateBtn" class="radius button"></button>
     </p>
-    <div class="alert-box info "></div>
+    <div class="alert-box callout primary luckAlert"></div>
 </div>
 `);
 
@@ -23,7 +23,7 @@ let notesBox;
 
 beforeEach(() => {
   rotateBtn = $('#rotateBtn');
-  notesBox = $('.alert-box.info');
+  notesBox = $('.alert-box.callout.luckAlert');
 });
 
 // eslint-disable-next-line require-jsdoc
