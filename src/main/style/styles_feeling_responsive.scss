@@ -1,13 +1,8 @@
----
-# Only the main Sass file needs front matter, rest is included from site.sass.sass_dir
-sitemap:
-  exclude: true
----
 @charset "utf-8";
 
 @import 'settings_foundation';
-@import 'foundation';
-@import 'motion-ui';
+@import '~foundation-sites/scss/foundation';
+@import '~motion-ui/motion-ui';
 
 // Global styles
 @include foundation-global-styles;
@@ -78,13 +73,8 @@ sitemap:
 //@import "06_typography.scss";
 //@import "07_layout.scss";
 //@import "09_elements.scss";
-
-{% if site.asciidoctor-enabled == true %}
-@import "10_asciidoc.scss";
-{% endif %}
-
 //@import "11_syntax-highlighting.scss";
 
-@import "custom_styles.scss";
+@import "global/custom_styles.scss";
 //Downloaded from https://jwarby.github.io/jekyll-pygments-themes/languages/java.html
-@import "highlight_syntax_github"
+@import "global/highlight_syntax_github";

@@ -70,7 +70,7 @@ markdown           : kramdown
 permalink          : /:categories/:title/
 highlight          : rouge
 excerpt_separator  : "<!--more-->"
-include            : ['.htaccess', 'src/node_modules/foundation-sites/scss', 'src/node_modules/motion-ui']
+include            : ['.htaccess']
 # Exclude these files from your production _site
 exclude:
     - .sass-cache
@@ -97,6 +97,9 @@ exclude:
     - .idea
     - .gitignore
     - .travis.yml
+    - src/deprecated
+    - assets/appStyle.js
+    - assets/appStyle.js.map
 
 
 # -----
@@ -221,14 +224,6 @@ disqus_shortname: stapetrospace
 #    ___/ / /_/ (__  |__  )     More › http://sass-lang.com/
 #   /____/\__,_/____/____/      More › http://jekyllrb.com/docs/assets/#sassscss
 #
-
-sass:
-    load_paths:
-      - _sass
-      - src/node_modules/foundation-sites/scss
-      - src/node_modules/motion-ui
-    style    : :compressed
-
 
 #       ___                __      __  _
 #      /   |  ____  ____ _/ /_  __/ /_(_)_________
