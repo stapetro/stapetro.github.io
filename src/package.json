@@ -34,7 +34,7 @@
     "test": "npx jest",
     "test:coverage": "npx jest --collectCoverage",
     "bundle": "npx webpack --mode=production",
-    "lint": "npx eslint \"main/**\""
+    "lint": "npx eslint --ext .js,.mjs \"main/**\""
   },
   "repository": {
     "type": "git",

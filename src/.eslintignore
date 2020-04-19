@@ -1,0 +1,8 @@
+main/**/*.scss
+main/**/*.css
+main/**/*.svg
+main/**/*.ttf
+main/**/*.eot
+main/**/*.woff
+main/**/*.yml
+main/**/*.html
