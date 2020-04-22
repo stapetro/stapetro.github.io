@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  target: 'web',
   entry: {
     pickLuck: './main/pickLuck.main.js',
     mediaElementSetup: './main/mediaElementSetup.js',
