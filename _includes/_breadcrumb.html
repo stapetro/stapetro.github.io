@@ -3,25 +3,60 @@
 * https://developers.google.com/search/docs/data-types/breadcrumb
 {% endcomment %}
 
+{% assign crumbs = page.url | split: '/' %}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+        {%- if page.lang == 'en' -%}
+            {
+            "@type": "ListItem",
+            "position": 1,
+            "name": {{ site.data.translations.breadcrumb_start[page.lang] | jsonify }},
+            "item": {{ '' | absolute_url | jsonify }}
+            },
+        {%- endif -%}
+{%- for crumb in crumbs offset: 1 -%}
+    {%- assign crumb_limit = forloop.index | plus: 1 -%}
+        {
+            "@type": "ListItem",
+    {%- if page.lang == 'en' -%}
+            "position": {{ crumb_limit }},
+    {%- else -%}
+            "position": {{ forloop.index }},
+    {%- endif -%}
+    {%- if forloop.last -%}
+            "name": {{ page.title | jsonify }}
+        }
+    {%- else -%}
+            "item": {{ crumbs | slice: 0, crumb_limit | join: '/' | absolute_url | jsonify }},
+            "name": {{ crumb | replace:'-',' ' | jsonify }}
+        },
+    {%- endif -%}
+{%- endfor -%}
+        ]
+    }
+</script>
 <nav aria-label="You are here:" role="navigation">
-    <ol class="breadcrumbs" vocab="https://schema.org/" typeof="BreadcrumbList">
-        <li property="itemListElement" typeof="ListItem">
-            <a property="item" typeof="WebPage" href="{{ site.url }}{{ site.baseurl }}">
-                <span property="name">{{ site.data.translations.breadcrumb_start[page.lang] }}</span></a>
-            <meta property="position" content="1">
+    <ol class="breadcrumbs">
+    {% if page.lang == 'en' %}
+        <li>
+            <a href="{{ '' | absolute_url }}">
+                <span>{{ site.data.translations.breadcrumb_start[page.lang] }}</span></a>
         </li>
-        {% assign crumbs = page.url | split: '/' %}
-        {% for crumb in crumbs offset: 1 %}
+    {% endif %}
+    {% for crumb in crumbs offset: 1 %}
         {% if forloop.last %}
-        <li class="disabled" property="itemListElement" typeof="ListItem">
-            <span property="name">{{ page.title }}</span>
+        <li class="disabled">
+            <span>{{ page.title }}</span>
         {% else %}
-        <li property="itemListElement" typeof="ListItem">
-            <a property="item" typeof="WebPage" href="{{ site.url }}{{ site.baseurl }}{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}">
-                <span property="name">{{ crumb | replace:'-',' ' }}</span></a>
+        <li>
+            {% assign crumb_limit = forloop.index | plus: 1 %}
+            <a href="{{ crumbs | slice: 0, crumb_limit | join: '/' | absolute_url }}">
+                <span>{{ crumb | replace:'-',' ' }}</span></a>
         {% endif %}
-        <meta property="position" content="{{ forloop.index | plus: 1 }}">
         </li>
-        {% endfor %}
+    {% endfor %}
     </ol>
 </nav>

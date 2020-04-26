@@ -23,6 +23,7 @@ archive:
   bg: "Архив"
 breadcrumb_start:
   en: "Start"
+  bg: "Начало"
 if_you_are_not_redirected_automatically:
   en: "If you are not redirected automatically,"
 click_here:
