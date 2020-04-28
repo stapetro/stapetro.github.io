@@ -2,6 +2,43 @@
 layout: default
 format: post
 ---
+{% assign author = site.data.authors[page.author] %}
+<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": {{ page.title | jsonify }},
+		"mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": {{ page.url | absolute_url | jsonify }}
+		},
+		"image": [
+	{%- if page.image.title -%}
+			{{ site.urlimg | append: page.image.title | jsonify }}
+	{%- endif -%}
+		],
+		"datePublished": {{ page.date | jsonify }},
+		"dateModified": {{ page.modified_at | default: page.date | jsonify }},
+		"author": {
+			"@type": "Person",
+			"name": {{ page.author | jsonify }},
+			"email": {{ author.email | jsonify }}
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": {{ site.title | jsonify }},
+			"logo": {
+				"@type": "ImageObject",
+				"url": {{ site.favicon-32x32 | prepend: '/assets/img/' | absolute_url | jsonify }},
+				"height": 32,
+				"width": 32
+			}
+		},
+		"description": {{ page.subheadline | jsonify }},
+		"articleBody": {{ page.teaser | strip_html | jsonify }},
+		"keywords": {{ page.tags | join: ',' | jsonify }}
+	}
+</script>
 <div class="grid-x grid-padding-x align-center">
 	<div class="cell medium-8 {% if page.sidebar == NULL %}medium-offset-2{% endif %}{% if page.sidebar == "left" %} medium-push-4{% endif %}">
 		<article itemscope itemtype="http://schema.org/Article">
