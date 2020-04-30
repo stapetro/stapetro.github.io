@@ -3,6 +3,8 @@
 -
 */
 
+// $font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 /* Masthead
 ------------------------------------------------------------------- */
 
@@ -25,6 +27,35 @@
 }
 #masthead-no-image-header #logo img {
   margin-top: 60px;
+}
+
+figure {
+  margin: 0 0 rem-calc(30) 0;
+}
+#masthead-with-background-color figure,
+#masthead-with-pattern figure {
+  margin: 0;
+}
+figcaption,
+.masthead-caption {
+  color: $dark-gray;
+  font-family: $header-font-family;
+  font-size: rem-calc(13);
+  padding-top: rem-calc(2);
+}
+figcaption a,
+.masthead-caption a {
+  border-bottom: 1px dotted $dark-gray;
+  color: $dark-gray;
+}
+figcaption a:hover,
+.masthead-caption a:hover {
+  border-bottom: 2px solid $primary-color;
+  color: $primary-color;
+}
+.masthead-caption {
+  padding-right: 10px;
+  text-align: right;
 }
 
 /* Masthead › small-only

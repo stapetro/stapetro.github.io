@@ -2,7 +2,19 @@
 layout: default
 format: post
 ---
-{% assign author = site.data.authors[page.author] %}
+{%- assign author = site.data.authors[page.author] -%}
+{%- capture imageS-%}
+{%-if page.header.image_fullwidth -%}
+{{ page.header.image_fullwidth }}
+{%- endif -%}
+{%- if page.image.title -%}
+{{ page.image.title | prepend: ',' }}
+{%- endif -%}
+{%- if page.image.thumb and page.image.thumb != page.image.title -%}
+{{ page.image.thumb | prepend: ',' }}
+{%- endif -%}
+{%- endcapture -%}
+{% assign images = imageS | split: ','  %}
 <script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
@@ -13,9 +25,11 @@ format: post
 			"@id": {{ page.url | absolute_url | jsonify }}
 		},
 		"image": [
-	{%- if page.image.title -%}
-			{{ site.urlimg | append: page.image.title | jsonify }}
-	{%- endif -%}
+	{%- for img in images -%}
+		{%- if img != NULL and img != "" -%}
+			{{ site.urlimg | append: img | jsonify }}{%- if forloop.last == false -%},{%- endif -%}
+		{%- endif -%}
+	{%- endfor -%}
 		],
 		"datePublished": {{ page.date | jsonify }},
 		"dateModified": {{ page.modified_at | default: page.date | jsonify }},
@@ -40,12 +54,12 @@ format: post
 	}
 </script>
 <div class="grid-x grid-padding-x align-center">
-	<div class="cell medium-8 {% if page.sidebar == NULL %}medium-offset-2{% endif %}{% if page.sidebar == "left" %} medium-push-4{% endif %}">
+	<div class="cell medium-8 {% if page.sidebar == "right" %}medium-offset-2{% endif %}{% if page.sidebar == "left" %} medium-push-4{% endif %}">
 		<article itemscope itemtype="http://schema.org/Article">
 			<header>
 				{% if page.image.title %}
 				<figure>
-					<img src="{{ site.urlimg }}{{ page.image.title }}" width="970" alt="{{ page.title | escape_once }}" itemprop="image">
+					<img src="{{ site.urlimg }}{{ page.image.title }}" alt="{{ page.title | escape_once }}" itemprop="image">
 
 					{% if page.image.caption_url and page.image.caption %}
 					<figcaption class="text-right">
