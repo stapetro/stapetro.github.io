@@ -19,9 +19,9 @@ tags:
 #
 header: no
 image:
-   thumb: "apache-nifi-logo.svg"
-   title: "apache-nifi-logo.svg"
-   caption: Source is Apache Nifi website
+   thumb: "apache-nifi-logo.jpg"
+   title: "apache-nifi-logo.jpg"
+   caption: Logo source is Apache Nifi website
    caption_url: https://nifi.apache.org/
 lang: en
 lang-ref: nifiLearnSteps

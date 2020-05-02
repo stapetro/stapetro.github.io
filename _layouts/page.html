@@ -55,11 +55,11 @@ format: post
 </script>
 <div class="grid-x grid-padding-x align-center">
 	<div class="cell medium-8 {% if page.sidebar == "right" %}medium-offset-2{% endif %}{% if page.sidebar == "left" %} medium-push-4{% endif %}">
-		<article itemscope itemtype="http://schema.org/Article">
+		<article>
 			<header>
 				{% if page.image.title %}
 				<figure>
-					<img src="{{ site.urlimg }}{{ page.image.title }}" alt="{{ page.title | escape_once }}" itemprop="image">
+					<img src="{{ site.urlimg }}{{ page.image.title }}" alt="{{ page.title | escape_once }}">
 
 					{% if page.image.caption_url and page.image.caption %}
 					<figcaption class="text-right">
@@ -73,19 +73,19 @@ format: post
 				</figure>
 				{% endif %}
 
-				<div itemprop="name">
+				<div>
 					{% if page.subheadline %}<p class="subheadline">{{ page.subheadline }}</p>{% endif %}
 					<h1>{{ page.title }}</h1>
 				</div>
 			</header>
 
 			{% if page.teaser %}
-			<p class="teaser" itemprop="description">
+			<p class="teaser">
 				{{ page.teaser }}
 			</p>
 			{% endif %}
 
-			<div itemprop="articleSection">
+			<div>
 			{{ content }}
 			</div>
 
