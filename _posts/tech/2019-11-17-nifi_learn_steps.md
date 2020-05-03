@@ -41,13 +41,17 @@ That's why I decided to start sharing ideas on how to solve various tasks with f
 I hope this article is the beginning of ongoing series.
 
 # Knowledge sources
+These sources helped me a lot to start understanding what I'm doing all day long.
 1. Wikipedia - read at least [flow-based programming][1] wiki's page to get an idea of this programming paradigm.
 2. Official [Apache Nifi][2] [documentation][7]
     1. [Apache Nifi Overview][8] explains the concepts and the programming perspective.
     2. [Apache Nifi Terminology][9] explains briefly the system's domain model.
 3. Apache Nifi [source code][3] is the most genuine source of truth.
 4. [Cloudera/Hortonworks Community Forum][5] presents many case studies and implementation directions.
-4. Trial & Error experience
+5. [Cloudera Dataflow Platform][12] (CDF)
+6. [Best of Nifi][13] presented by [Pierre Villard][14]
+7. [Stackoverflow questions on Nifi][15]
+8. Trial & Error experience
 
 # Environment and tools
 1. Official [Apache Nifi][4] docker image runs the system in a single-node execution mode.
@@ -107,3 +111,7 @@ I share a tasks' list I covered with Nifi.
  [9]: https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#terminology
  [10]: https://nifi.apache.org/faq.html
  [11]: https://stackoverflow.com/questions/52488300/how-to-change-root-dir-of-docker-on-ubuntu-18-04-lts-docker-change-location-of
+ [12]: https://www.cloudera.com/products/cdf.html
+ [13]: https://pierrevillard.com/best-of-nifi/
+ [14]: https://www.linkedin.com/in/pierrevillard/
+ [15]: https://stackoverflow.com/questions/tagged/apache-nifi
