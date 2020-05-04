@@ -36,8 +36,6 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 {% endif %}
 {% if site.google_analytics_tracking_id %}
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script defer src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_tracking_id }}"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
 <script defer src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 <script>
@@ -60,11 +58,6 @@ s0.parentNode.insertBefore(s1,s0);
         "link": "Learn more"
       }
     });
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ site.google_analytics_tracking_id }}');
   });
 </script>
 {% endif %}
