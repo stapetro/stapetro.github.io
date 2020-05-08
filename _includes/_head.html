@@ -58,9 +58,19 @@
 	<meta property="og:description" content="{{ description }}">
 	<meta property="og:url" content="{{ url }}{{ page.url }}">
 	<meta property="og:locale" content="{% if site.og_locale == nil %}en_EN{% else %}{{ site.og_locale }}{% endif %}">
-	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="{{ site.title }}">
-	{% if page.image.title %}<meta property="og:image" content="{{ site.urlimg }}{{ page.image.title }}">{% endif %}
+{%- if page.id -%}
+	<meta property="og:type" content="article">
+{%- else -%}
+	<meta property="og:type" content="website">
+{%- endif -%}
+{%-if page.image.open_graph -%}
+	<meta property="og:image" content="{{ site.urlimg | append: page.image.open_graph }}" />
+	<meta property="og:image:width" content="{{ page.image.og_width }}" />
+	<meta property="og:image:height " content="{{ page.image.og_height }}" />
+{%- elsif page.image.title -%}
+	<meta property="og:image" content="{{ site.urlimg | append: page.image.title }}">
+{%- endif -%}
 	{% if site.socialmedia.facebook %}<meta property="article:author" content="https://www.facebook.com/{{ site.socialmedia.facebook }}">{% endif %}
 
 

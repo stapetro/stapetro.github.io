@@ -23,6 +23,9 @@ image:
    title: "apache-nifi-logo.jpg"
    caption: Logo source is Apache Nifi website
    caption_url: https://nifi.apache.org/
+   open_graph: "apache-nifi-logo.jpg"
+   og_width: 180
+   og_height: 76
 lang: en
 lang-ref: nifiLearnSteps
 comments: true
