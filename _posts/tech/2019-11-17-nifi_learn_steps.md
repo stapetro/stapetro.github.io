@@ -24,8 +24,8 @@ image:
    caption: Logo source is Apache Nifi website
    caption_url: https://nifi.apache.org/
    open_graph: "apache-nifi-logo.jpg"
-   og_width: 180
-   og_height: 76
+   og_width: 474
+   og_height: 200
 lang: en
 lang-ref: nifiLearnSteps
 comments: true
@@ -54,7 +54,9 @@ These sources helped me a lot to start understanding what I'm doing all day long
 5. [Cloudera Dataflow Platform][12] (CDF)
 6. [Best of Nifi][13] presented by [Pierre Villard][14]
 7. [Stackoverflow questions on Nifi][15]
-8. Trial & Error experience
+8. [ExecuteScript Cookbook][16]
+9. [ExecuteScript Cookbook - json2json][17]
+10. Trial & Error experience
 
 # Environment and tools
 1. Official [Apache Nifi][4] docker image runs the system in a single-node execution mode.
@@ -118,3 +120,5 @@ I share a tasks' list I covered with Nifi.
  [13]: https://pierrevillard.com/best-of-nifi/
  [14]: https://www.linkedin.com/in/pierrevillard/
  [15]: https://stackoverflow.com/questions/tagged/apache-nifi
+ [16]: https://community.cloudera.com/t5/Community-Articles/ExecuteScript-Cookbook-part-1/ta-p/248922
+ [17]: http://funnifi.blogspot.com/2016/03/executescript-json-to-json-revisited.html

@@ -15,4 +15,9 @@ permalink: /bg/index.html
 #
 homepage: true
 lang: bg
+lang-ref: home
+image:
+   open_graph: "pirin_20180601_161718_1920_1080.jpg"
+   og_width: 1920
+   og_height: 1080
 ---
