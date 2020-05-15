@@ -30,7 +30,7 @@ lang: en
 lang-ref: nifiLearnSteps
 comments: true
 date: 2019-11-17T12:27:46+00:00
-modified_at: 2019-11-30T:21:30+00:00
+modified_at: 2020-05-15T:10:03+00:00
 ---
 # Background
 Apache Nifi ([nye fye][10]) is a decent tool. It minimizes writing code in many cases. The tool forced me to think in flow-based style 

@@ -75,11 +75,9 @@
 	<meta property="og:locale" content="en_US">
 {%- endcase -%}
 {%- if page.lang-ref -%}
-	{% assign pagesWithAlternateLang = site.pages | where:"lang-ref", page.lang-ref %}
+	{% assign pagesWithAlternateLang = site.pages | where_exp:"item", "item.lang-ref == page.lang-ref"
+		| where_exp:"item","item.lang != page.lang" %}
 	{%- for pg in pagesWithAlternateLang -%}
-		{%- if pg.lang == page.lang -%}
-			{%- continue -%}
-		{%- endif -%}
 		{%- case pg.lang -%}
 		{%- when "en" %}
 	<meta property="og:locale:alternate" content="en_US">
