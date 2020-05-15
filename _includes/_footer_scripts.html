@@ -35,7 +35,7 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 {% endif %}
-{% if site.google_analytics_tracking_id %}
+{% if site.google_analytics_tracking_id or site.fb_app_id %}
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
 <script defer src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 <script>

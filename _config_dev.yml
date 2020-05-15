@@ -9,9 +9,9 @@
 host: 0.0.0.0
 port: 4000
 
-url: 		'http://localhost:4000'
-baseurl: 	''
-urlimg: 	'http://localhost:4000/images/'
+url: 'http://localhost:4000'
+baseurl: ''
+urlimg: 'http://localhost:4000/images/'
 
 # See › https://github.com/jekyll/jekyll-gist#disabling-noscript-support
 gist:
@@ -19,3 +19,4 @@ gist:
 
 # Disable when not in production
 google_analytics_tracking_id: false
+fb_app_id: false

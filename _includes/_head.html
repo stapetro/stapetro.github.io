@@ -103,7 +103,13 @@
 {%- elsif page.image.title -%}
 	<meta property="og:image" content="{{ site.urlimg | append: page.image.title }}">
 {%- endif -%}
-	{% if site.socialmedia.facebook %}<meta property="article:author" content="https://www.facebook.com/{{ site.socialmedia.facebook }}">{% endif %}
+{%- if site.socialmedia.facebook -%}
+	<meta property="article:author" content="https://www.facebook.com/{{ site.socialmedia.facebook }}">
+{%- endif -%}
+{%- if site.fb_app_id -%}
+	<meta property="fb:app_id" content="{{ site.fb_app_id }}">
+{%- endif -%}
+
 
 
 	{% if site.socialmedia.twitter %}
