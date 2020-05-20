@@ -15,6 +15,16 @@ class Note {
       content.padEnd(TEXT_SIZE, `${content} `) :
       content.substring(0, TEXT_SIZE);
     this.author = author;
+    /**
+     * Current note index.
+     * @type {number}
+     */
+    this.index = undefined;
+    /**
+     * Total notes count.
+     * @type {number}
+     */
+    this.totalCount = undefined;
   }
 
   /**
@@ -33,12 +43,9 @@ class Note {
    */
   get html() {
     const contentHtml = `<p>${this.content}</p>`;
-    if (!this.author) {
-      return contentHtml;
-    }
-    const authorHtml = this.author ? this.author : '';
-    const metaDataHtml = `<p>${authorHtml}<p>`;
-    return contentHtml + metaDataHtml;
+    const authorHtml = !this.author ? '' : `<p>${this.author}<p>`;
+    const indexHtml = `<p>${this.index} / ${this.totalCount}<p>`;
+    return contentHtml + authorHtml + indexHtml;
   }
 
   /**
@@ -60,6 +67,7 @@ class NoteTaker {
    */
   constructor(notes) {
     this.notes = notes;
+    this.totalNotesCount = this.notes.length;
   }
 
   /**
@@ -260,6 +268,17 @@ class NoteTaker {
       Note.newNote('Жив си, когато не се отказваш.', 'Боян Петров'),
       Note.newNote('Много енергия хаби нашето общество в стремежа да се противопоставяме един на друг. Бих призовал всички хора да бъдат по-смирени, съобразявайки се с чуждото мнение. Противопоставянето по никакъв начин не ни помага да сме психологически устойчиви.', 'Тодор Димитров - Ел Капитан'),
       Note.newNote('Покорявам не върхове, а единствено себе си.', 'Боян Петров'),
+      Note.newNote('Винаги изглежда невъзможно, докато някой го направи.', 'Нелсън Мандела'),
+      Note.newNote('Лудост: да правиш едно и също нещо отново и отново и да очакваш различни резултати.', 'Алберт Айнщаин'),
+      Note.newNote('Пропуснал съм над 9000 изстрела в кариерата си. Загубил съм почти 300 мача. 26 пъти ми се доверяваха да направя финалния и решаващ изстрел и съм пропускал. Провалял съм се много пъти в живота си. И точно заради това успях.', 'Майкъл Джордан'),
+      Note.newNote('Тайната да излезеш начело, е да започнеш.', 'Марк Твен'),
+      Note.newNote('Късметът е, когато подготовката срещне възможността.', 'Опра Уинфри'),
+      Note.newNote('Най-великите спортни постижения се случват в съзнанието, не в тялото.', 'Мат Фицджералд'),
+      Note.newNote('Съзнанието е всичко. Мускулите - парченца гума. Всичко, което съм, се дължи на съзнанието ми.', 'Пааво Нурми, олимпийска легенда'),
+      Note.newNote('Всичко, което се случва, е за мое добро и аз ще разбера защо!', 'Юли Тонкин'),
+      Note.newNote('Винаги помни, че най-хубавото нещо на миналото е, че е минало, най-хубавото на настоящето е, че е тук и сега, и най-хубавото на бъдещето е, че все още не е дошло!', 'Юли Тонкин'),
+      Note.newNote('Ако не се радваш на това, което имаш в момента, няма да се радваш и на това, което ще постигнеш!', 'Юли Тонкин'),
+      Note.newNote('Вярата в безграничните ни възможности е вятърът, който държи хвърчилото ни винаги нагоре!', 'Юли Тонкин'),
     ];
     /* eslint-enable max-len */
   }
@@ -269,17 +288,26 @@ class NoteTaker {
    * @return {!Note} Randomly-picked note.
    */
   takeNote() {
-    return NoteTaker.getRandomNote(this.notes);
+    return this.getRandomNote(this.notes);
   }
 
   /**
    *
-   * @param {[]} arr Array
-   * @return {*} Random item.
+   * @param {Note[]} arr Array
+   * @return {Note} Random item.
    */
-  static getRandomNote(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
+  getRandomNote(arr) {
+    const randomIndex = NoteTaker.getRandomIndex(this.totalNotesCount);
+    const note = arr[randomIndex];
+    note.index = randomIndex + 1;
+    note.totalCount = this.totalNotesCount;
+    return note;
   };
+
+  // eslint-disable-next-line require-jsdoc
+  static getRandomIndex(arrLength) {
+    return Math.floor(Math.random() * arrLength);
+  }
 }
 
 /**
@@ -318,7 +346,7 @@ export class NoteViewer {
   }
 
   /**
-   * Public.
+   * Public. Starts rotating notes.
    * @param {Object} event DOM event.
    * @return {undefined}
    */
@@ -342,7 +370,7 @@ export class NoteViewer {
   }
 
   /**
-   * Private.
+   * Picks and displays a lucky note.
    * @param {Object} event DOM event.
    * @return {undefined}
    */
@@ -355,6 +383,7 @@ export class NoteViewer {
   };
 
   /**
+   * Rotate button label.
    * @param {String} btnLbl
    */
   set rotateBtnLabel(btnLbl) {
@@ -362,6 +391,7 @@ export class NoteViewer {
   }
 
   /**
+   * Rotate button title.
    * @param {String} btnTitle
    */
   set rotateBtnTitle(btnTitle) {
@@ -369,6 +399,7 @@ export class NoteViewer {
   }
 
   /**
+   * Rotate button click handler.
    * @param {Function} handleFn
    */
   set rotateBtnClickHandler(handleFn) {

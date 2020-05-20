@@ -50,7 +50,10 @@ class NoteGenerator {
     return {
       content,
       author,
-      html: `${content}<->${author || ''}`,
+      get html() {
+        return `<p>${content}</p><p>${author || ''}</p>` +
+          `<p>Note number ${this.index} from all ${this.totalCount}</p>`;
+      },
       htmlWithFixedSizedTxt: `fixed ${content.substring(0, 3)}`,
     };
   }
@@ -131,14 +134,33 @@ describe('NoteViewer API', () => {
     }
   };
 
+
+  /**
+   * Create note viewer with real notes.
+   * @param {number} rotateIntervalInMs
+   * @param {boolean} withAuthor
+   * @return {NoteViewer}
+   */
+  const createNoteViewer = (rotateIntervalInMs, withAuthor) => {
+    const noteViewer = new NoteViewer(rotateBtn, notesBox, rotateIntervalInMs);
+    noteViewer.noteTaker.notes = noteViewer.noteTaker.notes
+        .filter((note) => withAuthor ? !!note.author : !note.author)
+        .slice(0, 3);
+    noteViewer.noteTaker.totalNotesCount = noteViewer.noteTaker.notes.length;
+    return noteViewer;
+  };
+
   /* eslint-disable max-len */
   /* eslint-disable indent */
   test.each`
     newNoteViewerFn | rotateIntervalInMs | condition
     ${() => noteViewer} | ${expectedRotateIntervalInMs} | ${'2 fake'}
-    ${() => new NoteViewer(rotateBtn, notesBox)} | ${100} | ${'all production'}
+    ${() => createNoteViewer(100, false)} | ${100}
+      | ${'real without author'}
+    ${() => createNoteViewer(expectedRotateIntervalInMs, true)}
+      | ${expectedRotateIntervalInMs} | ${'real with author'}
     ${() => new NoteViewer(rotateBtn, notesBox, expectedRotateIntervalInMs,
-    [NoteGenerator.generateNotes()[0]])}| ${expectedRotateIntervalInMs}
+    [NoteGenerator.generateNotes()[0]])} | ${expectedRotateIntervalInMs}
       | ${'1 no-author-fake'}
     `('NoteViewer.startRotate with $condition notes',
     ({newNoteViewerFn, rotateIntervalInMs}) => {
@@ -181,7 +203,10 @@ describe('NoteViewer API', () => {
   test.each`
     newNoteViewerFn | condition
     ${() => noteViewer} | ${'2 fake'}
-    ${() => new NoteViewer(rotateBtn, notesBox)} | ${'all production'}
+    ${() => createNoteViewer(100, false)}
+      | ${'real without author'}
+    ${() => createNoteViewer(expectedRotateIntervalInMs, true)}
+      | ${'real with author'}
      ${() => new NoteViewer(rotateBtn, notesBox, expectedRotateIntervalInMs,
     [NoteGenerator.generateNotes()[0]])} | ${'1 no-author-fake'}
     `('NoteViewer pick a lucky note from $condition notes',
@@ -197,11 +222,15 @@ describe('NoteViewer API', () => {
       const isNotePresent = (notes, pNotesBoxHtml) => {
         return notes.some((noteElem) => {
           const hasContent = pNotesBoxHtml.indexOf(noteElem.content) >= 0;
+          const hasIndex = (!!noteElem.index &&
+            pNotesBoxHtml.indexOf(noteElem.index) >= 0);
+          const hasTotalCount = (!!noteElem.totalCount &&
+            pNotesBoxHtml.indexOf(noteElem.totalCount) >= 0);
           let hasAuthor = true;
           if (noteElem.author) {
             hasAuthor = pNotesBoxHtml.indexOf(noteElem.author) >= 0;
           }
-          return hasContent && hasAuthor;
+          return hasContent && hasAuthor && hasIndex && hasTotalCount;
         });
       };
       const actualNotesBoxHtml = notesBox.prop('innerHTML');

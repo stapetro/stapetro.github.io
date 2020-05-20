@@ -189,6 +189,7 @@ figcaption a:hover,
   url('fonts/iconfont.woff') format('woff'), /* Pretty Modern Browsers */
   url('fonts/iconfont.ttf')  format('truetype'), /* Safari, Android, iOS */
   url('fonts/iconfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+  font-display: swap;
 }
 
 .iconfont       { font-family: iconfont; }
