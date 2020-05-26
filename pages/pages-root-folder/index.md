@@ -6,7 +6,12 @@
 #
 layout: frontpage
 header:
-  image_fullwidth: pirin_20180601_161718_1920_1080.jpg
+  image_fullwidth: pirin_20180601_161718_768_432_40perce.jpg
+  images:
+    - width: 1920
+      path: pirin_20180601_161718_1920_1080.jpg
+    - width: 768
+      path: pirin_20180601_161718_768_432_40perce.jpg
 
 permalink: /index.html
 #

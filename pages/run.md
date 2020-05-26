@@ -4,7 +4,10 @@ show_meta: false
 title: "Running Blog"
 subheadline: "Running"
 header:
-   image_fullwidth: "header_unsplash_5.jpg"
+    image_fullwidth: "header_unsplash_8.jpg"
+    images:
+        - width: 1600
+          path: "header_unsplash_8.jpg"
 permalink: "/blog/run/"
 lang: en
 ---

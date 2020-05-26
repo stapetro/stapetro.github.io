@@ -5,6 +5,7 @@ module.exports = {
   target: 'web',
   entry: {
     pickLuck: './main/pickLuck.main.js',
+    headerImage: './main/headerImage.mjs',
     mediaElementSetup: './main/mediaElementSetup.js',
     index: './main/index.js',
     appStyle: './main/style/index.js',
@@ -13,6 +14,8 @@ module.exports = {
     path: path.resolve(__dirname, '..', 'assets'),
     publicPath: '/assets/',
     filename: '[name].js',
+    library: ['MyLibrary', '[name]'],
+    libraryTarget: 'umd',
   },
   devtool: 'source-map',
   plugins: [new MiniCssExtractPlugin()],

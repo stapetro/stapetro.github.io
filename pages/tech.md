@@ -4,7 +4,12 @@ show_meta: false
 title: "Software Engineering Blog"
 subheadline: "IT & Software"
 header:
-   image_fullwidth: "header_trigrad_devil_throat_20190505_122717_sized.jpg"
+    image_fullwidth: "header_trigrad_devil_throat_20190505_122717_768_432.jpg"
+    images:
+        - width: 1600
+          path: "header_trigrad_devil_throat_20190505_122717_1600_900.jpg"
+        - width: 768
+          path: "header_trigrad_devil_throat_20190505_122717_768_432.jpg"
 permalink: "/blog/tech/"
 lang: en
 ---

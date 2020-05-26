@@ -2,17 +2,50 @@
 <script defer src="{{ url }}/assets/mediaElementSetup.js"></script>
 {% endif %}
 
-<script src="{{ url }}/assets/js/modernizr.min.js"></script>
+<script defer type="module" src="{{ '/assets/js/modernizr.min.js' | prepend: url }}"></script>
+<script defer type="module" src="{{ '/assets/headerImage.js' | absolute_url }}"></script>
+<script defer type="module">
+{%- if page.header == NULL and page.header.images == NULL and page.header.pattern == NULL and page.header.background-color == NULL and page.header.title == NULL -%}
+  const mastHeadContainerId = '#masthead-no-image-header';
+{%- elsif page.header.images -%}
+  const mastHeadContainerId = '#masthead';
+{%- else -%}
+  const mastHeadContainerId = undefined;
+{%- endif -%}
+  if(mastHeadContainerId) {
+    const siteLogoElem =
+`<div id="logoContainer" class="grid-x align-center">
+    <div class="cell large-6">
+        <a id="logo" href="{{ '/' | absolute_url }}" title="{{ site.title }} – {{ site.slogan }}">
+            <img src="{{ site.url }}{{ site.baseurl }}/assets/img/{{ site.logo }}" alt="{{ site.title }} – {{ site.slogan }}">
+        </a>
+    </div>
+</div>`;
+    const query = Modernizr.mq(`(min-width: ${MyLibrary.headerImage.MIN_WIDTH_PX}px)`);
+    if (query) {
+      MyLibrary.headerImage.showSiteLogo(mastHeadContainerId, siteLogoElem, true);
+    }
+    $(window).on('resize', function() {
+      const win = $(this);
+      if (win.width() >= MyLibrary.headerImage.MIN_WIDTH_PX) {
+        MyLibrary.headerImage.showSiteLogo(mastHeadContainerId, siteLogoElem, true);
+      } else {
+        MyLibrary.headerImage.showSiteLogo(mastHeadContainerId, undefined, false);
+      }
+    });
+  }
+</script>
 {% comment %}
 #  Change to script type=module and move to header?
 #
 {% endcomment %}
-<script src="{{ site.url }}{{ site.baseurl }}/assets/index.js"></script>
+<script src="{{ '/assets/index.js' | absolute_url }}"></script>
 
-{% if page.header.image_fullwidth %}
+{% if page.header.images %}
 <script defer type="module">
-    $("#masthead").backstretch("{{ site.urlimg }}{{ page.header.image_fullwidth }}", {fade: 700});
-    $("#masthead-with-text").backstretch("{{ site.urlimg }}{{ page.header.image_fullwidth }}", {fade: 700});
+  const imgBaseUrl = '{{ site.urlimg }}';
+  const imgObjects = {{ page.header.images | jsonify }};
+  MyLibrary.headerImage.loadHeaderImage(imgBaseUrl, imgObjects);
 </script>
 {% endif %}
 

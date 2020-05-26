@@ -5,7 +5,7 @@ sitemap:
   exclude: true
 rootMatcher: '/atom:feed'
 stylesheetAttributes: 'xmlns:atom="http://www.w3.org/2005/Atom"'
-disclaimer: 'This <a href="https://en.wikipedia.org/wiki/RSS" target="_blank">Atom feed</a> is meant to be used by <a href="https://en.wikipedia.org/wiki/Template:Aggregators" target="_blank">RSS reader applications and websites</a>.'
+disclaimer: 'This <a href="https://en.wikipedia.org/wiki/RSS" target="_blank" rel="noopener">Atom feed</a> is meant to be used by <a href="https://en.wikipedia.org/wiki/Template:Aggregators" target="_blank" rel="noopener">RSS reader applications and websites</a>.'
 lang: en
 lang-ref: feed-atom
 ---

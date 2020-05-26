@@ -25,13 +25,13 @@
 
             {% comment %}   If left side WITHOUT dropdown menu do   {% endcomment %}
             {% if link.dropdown == nil %}
-            <li{% if link.url == page.url %} class="is-active"{% elsif page.homepage == true and link.url == '/' %} class="is-active"{% endif %}><a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank"{% endif %}>{{ link.title | escape }}</a></li>
+            <li{% if link.url == page.url %} class="is-active"{% elsif page.homepage == true and link.url == '/' %} class="is-active"{% endif %}><a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank" rel="noopener"{% endif %}>{{ link.title | escape }}</a></li>
 
             {% comment %}   If left side WITH dropdown menu do   {% endcomment %}
             {% else %}
 
             <li class="has-submenu{% if link.url == page.url %} is-active{% endif %}">
-                <a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank"{% endif %}>{{ link.title | escape }}</a>
+                <a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank" rel="noopener"{% endif %}>{{ link.title | escape }}</a>
 
                 <ul class="submenu menu vertical" data-submenu>
                     {% for dropdown_link in link.dropdown %}
@@ -42,7 +42,7 @@
                     {% assign domain = site.url %}
                     {% endif %}
 
-                    <li><a {% if dropdown_link.class %}class="{{dropdown_link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ dropdown_link.url }}"{% if dropdown_link.url contains 'http' %} target="_blank"{% endif %}>{{ dropdown_link.title | escape }}</a></li>
+                    <li><a {% if dropdown_link.class %}class="{{dropdown_link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ dropdown_link.url }}"{% if dropdown_link.url contains 'http' %} target="_blank" rel="noopener"{% endif %}>{{ dropdown_link.title | escape }}</a></li>
                     {% endfor %}
                 </ul>
             </li>
@@ -68,13 +68,13 @@
           {% if link.side == 'right' %}
             {% comment %}   If right side WITHOUT dropdown menu do   {% endcomment %}
             {% if link.dropdown == nil %}
-              <li{% if link.url == page.url %} class="is-active"{% elsif page.homepage == true and link.url == '/' %} class="is-active"{% endif %}><a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank"{% endif %}>{{ link.title | escape }}</a></li>
+              <li{% if link.url == page.url %} class="is-active"{% elsif page.homepage == true and link.url == '/' %} class="is-active"{% endif %}><a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank" rel="noopener"{% endif %}>{{ link.title | escape }}</a></li>
 
             {% comment %}   If right side WITH dropdown menu do   {% endcomment %}
             {% else %}
 
               <li class="has-submenu">
-                <a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank"{% endif %}>{{ link.title | escape }}</a>
+                <a {% if link.class %}class="{{link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ link.url }}"{% if link.url contains 'http' %} target="_blank" rel="noopener"{% endif %}>{{ link.title | escape }}</a>
 
                   <ul class="submenu menu vertical" data-submenu>
                     {% for dropdown_link in link.dropdown %}
@@ -85,7 +85,7 @@
                         {% assign domain = site.url %}
                       {% endif %}
 
-                      <li><a {% if dropdown_link.class %}class="{{dropdown_link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ dropdown_link.url }}"{% if dropdown_link.url contains 'http' %} target="_blank"{% endif %}>{{ dropdown_link.title | escape }}</a></li>
+                      <li><a {% if dropdown_link.class %}class="{{dropdown_link.class}}"{% endif %} href="{{ domain }}{{ site.baseurl }}{{ dropdown_link.url }}"{% if dropdown_link.url contains 'http' %} target="_blank" rel="noopener"{% endif %}>{{ dropdown_link.title | escape }}</a></li>
                     {% endfor %}
                   </ul>
               </li>

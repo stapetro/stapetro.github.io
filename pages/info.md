@@ -6,6 +6,9 @@ teaser: "I am developing and fixing software for a while (over a decade). I trav
 permalink: "/info/"
 header:
     image_fullwidth: "header_drop.jpg"
+    images:
+        - width: 1600
+          path: "header_drop.jpg"
 lang: en
 ---
 ...and learn at the same time.
