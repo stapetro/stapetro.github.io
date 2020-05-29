@@ -4,7 +4,7 @@ module.exports = function(api) {
   const isTest = api.env('test');
 
   if (isTest) {
-    presets.push('@babel/preset-env');
+    presets.push(['@babel/preset-env', {targets: {node: 'current'}}]);
   }
 
   api.cache(true);

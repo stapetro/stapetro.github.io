@@ -7,7 +7,8 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
-    "@types/jest": "^25.2.1",
+    "@types/jest": "^25.2.3",
+    "@types/jquery-backstretch": "^2.0.15",
     "babel-jest": "^25.3.0",
     "css-loader": "^3.5.2",
     "eslint": "^6.8.0",
@@ -16,6 +17,7 @@
     "foundation-sites": "^6.6.3",
     "imports-loader": "^0.8.0",
     "jest": "^25.3.0",
+    "jest-extended": "^0.11.5",
     "jquery": "^3.5.0",
     "jquery-backstretch": "^2.1.18",
     "mediaelement": "^4.2.16",
@@ -31,8 +33,8 @@
     "what-input": "^5.2.7"
   },
   "scripts": {
-    "test": "npx jest",
-    "test:coverage": "npx jest --collectCoverage",
+    "test": "npx jest --notify",
+    "test:coverage": "npx jest --notify --collectCoverage",
     "bundle": "npx webpack --mode=production",
     "lint": "npx eslint --ext .js,.mjs \"main/**\""
   },

@@ -13,24 +13,26 @@
   const mastHeadContainerId = undefined;
 {%- endif -%}
   if(mastHeadContainerId) {
-    const siteLogoElem =
+    const siteLogoElem = $(
 `<div id="logoContainer" class="grid-x align-center">
     <div class="cell large-6">
         <a id="logo" href="{{ '/' | absolute_url }}" title="{{ site.title }} – {{ site.slogan }}">
             <img src="{{ site.url }}{{ site.baseurl }}/assets/img/{{ site.logo }}" alt="{{ site.title }} – {{ site.slogan }}">
         </a>
     </div>
-</div>`;
+</div>`);
     const query = Modernizr.mq(`(min-width: ${MyLibrary.headerImage.MIN_WIDTH_PX}px)`);
+    const mastHeadContainer = $(mastHeadContainerId);
     if (query) {
-      MyLibrary.headerImage.showSiteLogo(mastHeadContainerId, siteLogoElem, true);
+      MyLibrary.headerImage.showSiteLogo(mastHeadContainer, siteLogoElem, undefined, true);
     }
     $(window).on('resize', function() {
+      const siteLogoContainer = $('#logoContainer');
       const win = $(this);
       if (win.width() >= MyLibrary.headerImage.MIN_WIDTH_PX) {
-        MyLibrary.headerImage.showSiteLogo(mastHeadContainerId, siteLogoElem, true);
+        MyLibrary.headerImage.showSiteLogo(mastHeadContainer, siteLogoElem, siteLogoContainer, true);
       } else {
-        MyLibrary.headerImage.showSiteLogo(mastHeadContainerId, undefined, false);
+        MyLibrary.headerImage.showSiteLogo(mastHeadContainer, undefined, siteLogoContainer, false);
       }
     });
   }
@@ -45,7 +47,8 @@
 <script defer type="module">
   const imgBaseUrl = '{{ site.urlimg }}';
   const imgObjects = {{ page.header.images | jsonify }};
-  MyLibrary.headerImage.loadHeaderImage(imgBaseUrl, imgObjects);
+  const mastHeadImgContainers = [$('#masthead'), $('#masthead-with-text')];
+  MyLibrary.headerImage.loadHeaderImage(imgBaseUrl, imgObjects, mastHeadImgContainers);
 </script>
 {% endif %}
 

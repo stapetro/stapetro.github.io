@@ -2,31 +2,31 @@
  * Loads header image
  * @param {string} imgBaseUrl Base URL for images.
  * @param {Array<Object>} imgObjects Image objects.
- * @return {undefined}
+ * @param {Array<Object>} mastHeadImgContainers List of jQuery objects.
+ * @return {boolean} True - success, false - otherwise.
  */
-export function loadHeaderImage(imgBaseUrl, imgObjects) {
-  const mastHeadPaths = ['#masthead', '#masthead-with-text'];
-  const imgContainerJqueryObj = getImageContainer(mastHeadPaths);
+export function loadHeaderImage(imgBaseUrl, imgObjects, mastHeadImgContainers) {
+  const imgContainerJqueryObj = getImageContainer(mastHeadImgContainers);
   if (!imgContainerJqueryObj) {
     console.warn('masthead img container is not found!');
-    return;
+    return false;
   }
   const imgObjectsForStretch = imgObjects.map((imgObj) => (
     {width: imgObj.width, url: `${imgBaseUrl}${imgObj.path}`}
   ));
   imgContainerJqueryObj.backstretch([imgObjectsForStretch], {fade: 700});
+  return true;
 }
 
 /**
  * Retrieve image container based on jquery paths.
- * @param {Array<string>} jQueryPaths jQuery locators.
+ * @param {Array<Object>} jQueryObjects jQuery objects.
  * @return {Object} jQuery object or undefined if not found.
  */
-const getImageContainer = (jQueryPaths) => {
-  for (const jQueryPath of jQueryPaths) {
-    const currJqueryObject = $(jQueryPath);
-    if (currJqueryObject.length) {
-      return currJqueryObject;
+const getImageContainer = (jQueryObjects) => {
+  for (const jQueryPath of jQueryObjects) {
+    if (jQueryPath.length > 0) {
+      return jQueryPath;
     }
   }
   return undefined;
@@ -40,18 +40,22 @@ export const MIN_WIDTH_PX = 640;
 
 /**
  * Shows or hides site logo.
- * @param {string} mastHeadContainerId jQuery locator path
- * @param {string} htmlElem Html element content
+ * @param {Object} mastHeadContainerEl jQuery object
+ * @param {Object} siteLogoEl jQuery object
+ * @param {Object} currentSiteLogoEl jQuery object Current site logo
+ * found by ID.
  * @param {boolean} show true - adds html element, false - removes it.
  */
-export function showSiteLogo(mastHeadContainerId, htmlElem, show) {
-  const logoContainer = jQuery('#logoContainer');
-  const logoContainerPresent = !!logoContainer.length;
+export function showSiteLogo(mastHeadContainerEl, siteLogoEl,
+    currentSiteLogoEl, show) {
+  const logoContainerPresent = currentSiteLogoEl &&
+    currentSiteLogoEl.length > 0;
   if (show) {
-    if (!logoContainerPresent) {
-      $(mastHeadContainerId).append(htmlElem);
+    if (logoContainerPresent) {
+      return;
     }
+    mastHeadContainerEl.append(siteLogoEl);
   } else if (logoContainerPresent) {
-    logoContainer.remove();
+    currentSiteLogoEl.remove();
   }
 }

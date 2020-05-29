@@ -9,9 +9,9 @@ header:
   image_fullwidth: pirin_20180601_161718_768_432_40perce.jpg
   images:
     - width: 1920
-      path: pirin_20180601_161718_1920_1080.jpg
+      path: pirin_20180601_161718_1920_1080.webp
     - width: 768
-      path: pirin_20180601_161718_768_432_40perce.jpg
+      path: pirin_20180601_161718_768_432_40perce.webp
 
 permalink: /index.html
 #
