@@ -17,7 +17,7 @@ slogan: 'Share life experience'
 description: '»Place« to share knowledge which I gain through experience.'
 
 # The credits show up in the includes/_footer.html – It would be nice of you to leave a link to Phlow or Feeling Responsive as a thank you :)
-credits: '<p>Created with &hearts; by <a href="https://github.com/stapetro">stapetro</a> with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> based on <a href="https://phlow.github.io/feeling-responsive/" target="_blank" rel="noopener">Feeling Responsive</a>.</p>'
+credits: '<p>Created with ❤️ by 🐵 <a href="https://github.com/stapetro" target="_blank" rel="noopener">stapetro</a> with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> based on <a href="https://phlow.github.io/feeling-responsive/" target="_blank" rel="noopener">Feeling Responsive</a> 🍻.</p>'
 
 # Main author of the website
 # See > authors.yml
@@ -183,19 +183,6 @@ google_author:             'https://github.com/stapetro'
 #    / __/ / /_/ /| |/ / / /__/ /_/ / / / (__  )
 #   /_/    \__,_/ |___/_/\___/\____/_/ /_/____/   Favicon-Crap: Favicons, Chrome, Android & Apple Touch Buttons
 #                                                 More information » https://mathiasbynens.be/notes/touch-icons
-
-favicon-32x32:                          'favicon-32x32.png'
-touch-icon-192x192:                     'touch-icon-192x192.png'
-apple-touch-icon-180x180-precomposed:   'apple-touch-icon-180x180-precomposed.png'
-apple-touch-icon-152x152-precomposed:   'apple-touch-icon-152x152-precomposed.png'
-apple-touch-icon-144x144-precomposed:   'apple-touch-icon-144x144-precomposed.png'
-apple-touch-icon-120x120-precomposed:   'apple-touch-icon-120x120-precomposed.png'
-apple-touch-icon-114x114-precomposed:   'apple-touch-icon-114x114-precomposed.png'
-apple-touch-icon-76x76-precomposed:     'apple-touch-icon-76x76-precomposed.png'
-apple-touch-icon-72x72-precomposed:     'apple-touch-icon-72x72-precomposed.png'
-apple-touch-icon-precomposed:           'apple-touch-icon-precomposed.png'
-msapplication_tileimage:                'msapplication_tileimage.png'               # Size 144x144
-msapplication_tilecolor:                '#fabb00'
 
 #        ____  _
 #       / __ \(_)________ ___  _______
