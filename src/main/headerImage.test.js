@@ -67,34 +67,34 @@ describe('showSiteLogo', () => {
   ${undefined} | ${false} | ${'undefined site logo'}
   ${$(LOGO_CONTAINER_LOCATOR)} | ${false} | ${'empty site logo'}
   `('show logo ($show) on initial page load with $currSiteLogoMsg',
-    ({currSiteLogo, show}) => {
-      const mastHeadContainerId = 'masthead';
-      document.body.innerHTML = createMastHeadContainer(mastHeadContainerId);
-      const mastHeadContainerEl = $(`#${mastHeadContainerId}`);
+      ({currSiteLogo, show}) => {
+        const mastHeadContainerId = 'masthead';
+        document.body.innerHTML = createMastHeadContainer(mastHeadContainerId);
+        const mastHeadContainerEl = $(`#${mastHeadContainerId}`);
 
-      showSiteLogo(mastHeadContainerEl, siteLogoContainerEl, currSiteLogo,
-          show);
+        showSiteLogo(mastHeadContainerEl, siteLogoContainerEl, currSiteLogo,
+            show);
 
-      assertLogoVisibility(mastHeadContainerEl, show, mastHeadContainerId);
-    });
+        assertLogoVisibility(mastHeadContainerEl, show, mastHeadContainerId);
+      });
 
   test.each`
   show
   ${true}
   ${false}
   `('show logo ($show) when logo is already visible',
-    ({show}) => {
-      const mastHeadContainerId = 'masthead-no-image-header';
-      document.body.innerHTML = createMastHeadContainer(mastHeadContainerId);
-      const mastHeadContainerEl = $(`#${mastHeadContainerId}`);
-      mastHeadContainerEl.append(siteLogoContainerEl);
-      const currSiteLogo = $(LOGO_CONTAINER_LOCATOR);
+      ({show}) => {
+        const mastHeadContainerId = 'masthead-no-image-header';
+        document.body.innerHTML = createMastHeadContainer(mastHeadContainerId);
+        const mastHeadContainerEl = $(`#${mastHeadContainerId}`);
+        mastHeadContainerEl.append(siteLogoContainerEl);
+        const currSiteLogo = $(LOGO_CONTAINER_LOCATOR);
 
-      showSiteLogo(mastHeadContainerEl, siteLogoContainerEl, currSiteLogo,
-          show);
+        showSiteLogo(mastHeadContainerEl, siteLogoContainerEl, currSiteLogo,
+            show);
 
-      assertLogoVisibility(mastHeadContainerEl, show, mastHeadContainerId);
-    });
+        assertLogoVisibility(mastHeadContainerEl, show, mastHeadContainerId);
+      });
 });
 
 describe('loadHeaderImage', () => {

@@ -166,28 +166,28 @@ describe('NoteViewer API', () => {
     ({newNoteViewerFn, rotateIntervalInMs}) => {
       /* eslint-enable indent */
       /* eslint-enable max-len */
-      const noteViewerObj = newNoteViewerFn();
+        const noteViewerObj = newNoteViewerFn();
 
-      noteViewerObj.startRotate();
+        noteViewerObj.startRotate();
 
-      assertNotEmptyString(rotateBtn.prop('innerHTML'));
-      assertNotEmptyString(rotateBtn.attr('title'));
+        assertNotEmptyString(rotateBtn.prop('innerHTML'));
+        assertNotEmptyString(rotateBtn.attr('title'));
 
-      expect(setTimeout).toHaveBeenCalledTimes(1);
-      /* eslint-disable indent */
+        expect(setTimeout).toHaveBeenCalledTimes(1);
+        /* eslint-disable indent */
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function),
         rotateIntervalInMs);
       /* eslint-enable indent */
 
-      jest.runOnlyPendingTimers();
+        jest.runOnlyPendingTimers();
 
-      const actualNotesBoxHtml = notesBox.prop('innerHTML');
-      assertNotEmptyString(actualNotesBoxHtml);
-      const isNotePreviewPresent = (notes, pNotesBoxHtml) =>
-        (notes.some((noteElem) => {
-          return pNotesBoxHtml.indexOf(noteElem.htmlWithFixedSizedTxt) >= 0;
-        }));
-      /* eslint-disable indent */
+        const actualNotesBoxHtml = notesBox.prop('innerHTML');
+        assertNotEmptyString(actualNotesBoxHtml);
+        const isNotePreviewPresent = (notes, pNotesBoxHtml) =>
+          (notes.some((noteElem) => {
+            return pNotesBoxHtml.indexOf(noteElem.htmlWithFixedSizedTxt) >= 0;
+          }));
+        /* eslint-disable indent */
       assertCurrentNoteIsPresent(
         actualNotesBoxHtml, noteViewerObj, isNotePreviewPresent,
       );
@@ -197,7 +197,7 @@ describe('NoteViewer API', () => {
       expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function),
         rotateIntervalInMs);
       /* eslint-enable indent */
-    });
+      });
 
   /* eslint-disable indent */
   test.each`
