@@ -4,19 +4,17 @@ cache:
   npm: true,
   directories:
     - src/node_modules
-    - src/.eslintcache
 rvm:
   - 2.6
 
-node_js:
-  - 12.14.0
-
 before_install:
   - gem update --system
+  - nvm install ${NODE_VERSION} --lts=erbium --latest-npm
 install: src/scripts/bootstrap
 script: src/scripts/cibuild
 
 env:
   jobs:
     - JEKYLL_VERSION="~> 3.8.0"
+    - NODE_VERSION="12.18.0"
     #    - JEKYLL_VERSION=">= 4.0.0.pre.alpha1"
