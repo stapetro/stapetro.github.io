@@ -11,6 +11,7 @@
     - [Build all](#build-all)
     - [Generate jekyll site](#generate-jekyll-site)
     - [Generate favicon](#generate-favicon)
+- [Performance](#performance)
 
 Instructions apply only for Linux/POSIX based OS. I use Ubuntu 18.04.4 LTS (bionic).
 # Tools
@@ -56,3 +57,6 @@ src/scripts/docker_jekyll.sh
 ```
 ## Generate favicon
 Favicons are generated from [code monkey image](assets/img/codemonkey_3149003.jpeg) by free [favicon generator](https://www.favicon-generator.org/) website.
+# Performance
+## Bundle analyzer
+I use [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer).
