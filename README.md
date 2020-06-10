@@ -60,3 +60,6 @@ Favicons are generated from [code monkey image](assets/img/codemonkey_3149003.jp
 # Performance
 ## Bundle analyzer
 I use [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer).
+## Remove unused JS modules
+Import [explicitly foundation modules](https://github.com/foundation/foundation-zurb-template/blob/master/src/assets/js/app.js).
+## Remove unused CSS styles
