@@ -326,7 +326,7 @@ figcaption a:hover,
 
 /* Color
 ------------------------------------------------------------------- */
-$white-green: #A1D044;     // green
+$white-green: #a1d044;     // green
 
 /* Footer
 ------------------------------------------------------------------- */
@@ -338,7 +338,7 @@ $white-green: #A1D044;     // green
 #footer {
   padding-top: 30px;
   padding-bottom: 20px;
-  background: scale-color($dark-gray, $lightness: -14%);
+  background: scale-color($dark-gray, $lightness: -45%);
   color: $white;
 }
 
@@ -355,8 +355,8 @@ $white-green: #A1D044;     // green
 
 /* Subfooter
 ------------------------------------------------------------------- */
-$subfooter-color-bg: scale-color($dark-gray, $lightness: -70%);
-$subfooter-color: scale-color($dark-gray, $lightness: -10%);
+$subfooter-color-bg: scale-color($dark-gray, $lightness: -90%);
+$subfooter-color: scale-color($dark-gray, $lightness: -5%);
 
 #subfooter {
   background: $subfooter-color-bg;
