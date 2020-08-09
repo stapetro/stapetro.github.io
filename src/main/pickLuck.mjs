@@ -296,6 +296,13 @@ class NoteTaker {
       Note.newNote('Знанието няма граници.', 'Веселин Измирлиев'),
       Note.newNote('Детството е вълшебство. Нека винаги да го откриваш в себе си.', undefined),
       Note.newNote('Безгранично щастие, колекция от незабравими моменти и слънчеви хоризонти пред мечтите ти.', undefined),
+      Note.newNote('Все още не съм срещал котка, която да се притеснява,<br/>какво си мислят мишките за нея.', undefined),
+      Note.newNote('Научете се да казвате важни неща с делничен тон.<br/>| Learn to say important things with casual tone. |', undefined),
+      Note.newNote('Любовта не кара света да се върти. Любовта е това, което прави пътуването ценно.', 'Елизабет Браунинг'),
+      Note.newNote('Банкерът е човек, който ти дава назаем чадър, когато времето е хубаво и си го взима обратно, когато завали.<br/>| The banker is someone who lends you an umbrella when the weather is nice and takes it back, when it rains. |', undefined),
+      Note.newNote('Ставаш свободен в момента, в който преставаш да търсиш извън себе си някой, който да ти реши проблемите.', undefined),
+      Note.newNote('Почти всички нещастия идват оттам, че непрекъснато се сравняваме с другите.', 'Хорас Браун'),
+      Note.newNote('Ревността е страх от превъзходството на другия.', undefined),
     ];
     /* eslint-enable max-len */
   }
