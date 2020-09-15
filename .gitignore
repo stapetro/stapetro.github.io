@@ -7,3 +7,6 @@ vendor
 .bundle
 src/node_modules
 src/coverage
+assets/appStyle.js
+assets/appStyle.js.map
+.jekyll-metadata

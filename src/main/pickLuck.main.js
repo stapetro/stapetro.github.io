@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import {NoteViewer} from './pickLuck';
 
 const rotateBtn = $('#rotateBtn');

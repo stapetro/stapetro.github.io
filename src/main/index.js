@@ -1,8 +1,6 @@
 'use strict';
 
 import $ from 'jquery';
-
-require('imports-loader?$=jquery,jQuery=jquery!jquery-backstretch');
 import 'what-input';
 
 // <editor-fold desc="Foundation Sites">
@@ -116,3 +114,7 @@ $(document).foundation();
 
 window.jQuery = $;
 window.$ = $;
+// eslint-disable-next-line no-unused-vars
+import jqueryBackstretch from
+  // eslint-disable-next-line max-len
+  'imports-loader?imports=default|jquery|jQuery&wrapper=window!jquery-backstretch';
