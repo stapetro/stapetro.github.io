@@ -68,7 +68,7 @@ format: frontpage
 
             {% if post.image.caption_url and post.image.caption %}
             <p class="text-right caption">
-                <a href="{{ post.image.caption_url }}">{{ post.image.caption }}</a>
+                <a href="{{ post.image.caption_url }}" target="_blank" rel="noopener">{{ post.image.caption }}</a>
             </p>
             {% endif %}
             {% else post.image.homepage == NULL %}

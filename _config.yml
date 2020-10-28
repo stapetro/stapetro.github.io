@@ -49,6 +49,7 @@ plugins:
     - jekyll-asciidoc
     - jekyll-gist
     - jekyll-paginate
+    - jemoji
 
 timezone: EET
 source: .
@@ -266,4 +267,5 @@ gist:
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
+  parse_block_html: true
 #source: [your repo's top level directory]

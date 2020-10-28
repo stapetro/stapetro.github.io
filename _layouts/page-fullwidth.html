@@ -2,37 +2,96 @@
 layout: default
 format: page-fullwidth
 ---
-{% if page.image.title %}
-<div class="row t30">
-	<div class="small-12 columns">
-		<img src="{{ site.urlimg }}{{ page.image.title }}" width="970" alt="{{ page.title | escape_once }}">
-		{% if page.image.caption_url and page.image.caption %}
-		<p class="text-right caption">
-			<a href="{{ page.image.caption_url }}">{{ page.image.caption }}</a>
-		</p>
-		{% endif %}
-	</div><!-- /.small-12.columns -->
-</div><!-- /.row -->
-{% endif %}
-
-
-<div class="row t30">
-	<div class="medium-12 columns">
+{%- assign author = site.data.authors[page.author] -%}
+{%- capture imageS-%}
+{%-if page.header.image_fullwidth -%}
+{{ page.header.image_fullwidth }}
+{%- endif -%}
+{%- if page.image.title -%}
+{{ page.image.title | prepend: ',' }}
+{%- endif -%}
+{%- if page.image.thumb and page.image.thumb != page.image.title -%}
+{{ page.image.thumb | prepend: ',' }}
+{%- endif -%}
+{%- endcapture -%}
+{% assign images = imageS | split: ','  %}
+<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": {{ page.title | jsonify }},
+	"mainEntityOfPage": {
+	"@type": "WebPage",
+	"@id": {{ page.url | absolute_url | jsonify }}
+	},
+	"image": [
+	{%- for img in images -%}
+	{%- if img != NULL and img != "" -%}
+	{{ site.urlimg | append: img | jsonify }}{%- if forloop.last == false -%},{%- endif -%}
+	{%- endif -%}
+	{%- endfor -%}
+	],
+	"datePublished": {{ page.date | jsonify }},
+	"dateModified": {{ page.modified_at | default: page.date | jsonify }},
+	"author": {
+	"@type": "Person",
+	"name": {{ page.author | jsonify }},
+	"email": {{ author.email | jsonify }}
+	},
+	"publisher": {
+	"@type": "Organization",
+	"name": {{ site.title | jsonify }},
+	"logo": {
+	"@type": "ImageObject",
+	"url": {{ site.favicon-32x32 | prepend: '/assets/img/' | absolute_url | jsonify }},
+	"height": 32,
+	"width": 32
+	}
+	},
+	"description": {{ page.subheadline | jsonify }},
+	"articleBody": {{ page.teaser | strip_html | jsonify }},
+	"keywords": {{ page.tags | join: ',' | jsonify }}
+	}
+</script>
+<div class="grid-x grid-padding-x align-center">
+	<div class="cell small-12">
 		<article>
 			<header>
-				{% if page.subheadline %}<p class="subheadline">{{ page.subheadline }}</p>{% endif %}
-				<h1>{{ page.title }}</h1>
-			</header>
+				{% if page.image.title %}
+				<figure>
+					<img src="{{ site.urlimg }}{{ page.image.title }}" alt="{{ page.title | escape_once }}">
 
+					{% if page.image.caption_url and page.image.caption %}
+					<figcaption class="text-right">
+						<a href="{{ page.image.caption_url }}" target="_blank" rel="noopener">{{ page.image.caption }}</a>
+					</figcaption>
+					{% elsif page.image.caption %}
+					<figcaption class="text-right">
+						{{ page.image.caption }}
+					</figcaption>
+					{% endif %}
+				</figure>
+				{% endif %}
+				<div>
+					{% if page.subheadline %}<p class="subheadline">{{ page.subheadline }}</p>{% endif %}
+					<h1>{{ page.title }}</h1>
+				</div>
+			</header>
 			{% if page.teaser %}
 			<p class="teaser">
 				{{ page.teaser }}
 			</p>
 			{% endif %}
+			<div class="grid-container fluid">
+				{{ content }}
+			</div>
+			{% if page.show_meta == true %}
+			{% include _meta_information.html %}
+			{% endif %}
 
-			{{ content }}
+			{% if page.comments == true %}
+			{% include _comments.html %}
+			{% endif %}
 		</article>
-	</div><!-- /.medium-12.columns -->
-</div><!-- /.row -->
-
-
+	</div>
+</div>
