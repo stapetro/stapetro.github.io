@@ -5,7 +5,7 @@ Function Serve
 {
     docker run --rm -p 4000:4000 --volume="${pwd}:/srv/jekyll" --volume="${pwd}/vendor/bundle:/usr/local/bundle" `
     -it jekyll/builder:$env:JEKYLL_VERSION bundle exec jekyll serve --config _config.yml,_config_dev.yml `
-    --incremental --drafts --force_polling
+    --incremental --drafts --watch --force_polling
 }
 
 Function Build

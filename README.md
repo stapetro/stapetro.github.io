@@ -49,11 +49,21 @@ Runs [static code analysis](https://eslint.org/), [tests](https://jestjs.io/) an
 (cd src && npm run lint && npm run test:coverage && npm run bundle)
 ```
 ## Generate jekyll site
+### Bash
 ```bash
+$ cd <project_root_dir>
 # generate only
-src/scripts/docker_jekyll.sh build
+$ src/scripts/docker_jekyll.sh build
 # generate and serve jekyll site
-src/scripts/docker_jekyll.sh
+$ src/scripts/docker_jekyll.sh serve
+```
+### Powershell
+```powershell
+PS cd <project_root_dir>
+# generate only
+PS .\src\scripts\docker_jekyll.ps1 "Build"
+# generate and serve jekyll site
+PS .\src\scripts\docker_jekyll.ps1 "Serve"
 ```
 ## Generate favicon
 Favicons are generated from [code monkey image](assets/img/codemonkey_3149003.jpeg) by free [favicon generator](https://www.favicon-generator.org/) website.
