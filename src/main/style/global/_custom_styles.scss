@@ -420,3 +420,7 @@ $subfooter-color: scale-color($dark-gray, $lightness: -5%);
 }
 
 .pr20 { padding-right: 20px !important; }
+
+.docs-toc .is-active {
+  @include menu-state-active;
+}

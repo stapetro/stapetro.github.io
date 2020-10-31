@@ -32,11 +32,13 @@ lang: en
 lang-ref: bestNotebookForMe
 comments: true
 date: 2020-10-30T17:57:30+00:00
-modified_at: 2020-10-30T17:57:30+00:00
+modified_at: 2020-11-09T17:14:26+00:00
 ---
-<div class="grid-x" id="postTop">
+<div class="grid-x docs-component-inner" id="postTop">
 <div class="cell medium-9">
-# Requirements
+
+# Requirements 
+{: #requirements data-magellan-target="requirements" .docs-heading}
 You need to answer very important questions :question: before you go to the notebook store. I call them frequently asked questions (FAQ). You can find my answers below. I'd suggest to write down yours on a sheet of paper. :newspaper:
 1. What type of activities will I do?
   * :bowtie: Browse all types of web sites (including social media ones) at the same time.
@@ -69,6 +71,7 @@ I feel responsible to address the needs for playing modern games. I cannot give 
 :sunny: Hooray. Now you know what you want from your new notebook.
 
 # Hardware specification
+{: #hardware-specification data-magellan-target="hardware-specification" .docs-heading}
 I share directly a notebook model which complies very well to the answers above - [**Lenovo IdeaPad 3 15IIL05**](https://www.lenovo.com/bg/bg/laptops/ideapad/300-series/IdeaPad-3i-15ITL5/p/88IPS301421){:target="_blank" rel="noopener"} (link is in Bulgarian). This notebook is an entry-level model. It's best used for entertainment, education, business.
 
 | Brand name | Lenovo IdeaPad 3 15IIL05 |
@@ -96,11 +99,11 @@ If you are a curious geek and want to know more about the hardware specification
 </div>
 
 <div class="cell auto show-for-medium sticky-container" data-sticky-container>
-<nav class="sticky" data-sticky data-anchor="postTop" data-sticky-on="medium" data-margin-top="10">
+<nav class="sticky docs-toc docs-toc-wrap" data-sticky data-anchor="postTop" data-sticky-on="medium" data-margin-top="10">
 <h4> Table of Contents</h4>
 {: #toc }
 * A markdown unordered list which will be replaced with the ToC
-{:toc .vertical .menu data-magellan}
+{:toc .vertical .menu data-magellan="" data-deep-linking="true" data-docs-toc=""}
 <hr class="docs-toc-divider small">
 </nav>
 </div>
