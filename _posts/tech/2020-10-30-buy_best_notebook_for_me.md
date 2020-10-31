@@ -39,6 +39,7 @@ modified_at: 2020-11-09T17:14:26+00:00
 
 # Requirements 
 {: #requirements data-magellan-target="requirements" .docs-heading}
+<!--a class="docs-heading-icon" href="#requirements"></a-->
 You need to answer very important questions :question: before you go to the notebook store. I call them frequently asked questions (FAQ). You can find my answers below. I'd suggest to write down yours on a sheet of paper. :newspaper:
 1. What type of activities will I do?
   * :bowtie: Browse all types of web sites (including social media ones) at the same time.
@@ -60,11 +61,16 @@ You need to answer very important questions :question: before you go to the note
 6. Do I need DVD/CD optical device? - No, I haven't used DVDs/CDs the last 15 years. I always prefer to buy a second hard drive instead of DVD optical device.
 7. Do I need fast and stable network connection? - Wireless network is sufficient if you don't have a particular requirement. You can watch movies and listen to music online without any problem. If you want to multi-play with others on a modern game with rich graphics, better use wired network connection (Ethernet input port).
 8. How much noise does it make? - I work from quite some time with a noisy notebook. It was fine at the beginning, but it puts now my nervous system to its upper limits. I'd highly recommend to pay attention to this aspect.
-7. What OS do I want to use? - Most people use the latest stable version of Windows 10. I do also honor Ubuntu Linux distribution.
-8. Am I willing to pay for OS license? - No. I prefer to use Ubuntu. If you're not a technical person I'd highly recommend to use Windows 10.
-9. Which brand do I choose? - There's no answer to this philosophical question. I have a good experience with [Dell](https://www.dell.com/ "Dell"){:target="_blank" rel="noopener"}, [Asus](https://www.asus.com/ "Asus"){:target="_blank" rel="noopener"}, [Lenovo](https://www.lenovo.com/ "Lenovo"){:target="_blank" rel="noopener"} brands.
-10. How much does a notebook weigh? - I prefer slim books for an entertainment entry-level notebooks. They weigh between 1.5 - 2.5 kg.
-11. Where do I buy it from? - Find the best retailer in your region. Most notebook makers provide options to buy directly from them or from their trusted partners. PC's makers list their partners very often on their official site. I use [Laptop.bg](https://laptop.bg/ "Laptop.BG"){:target="_blank" rel="noopener"} online store in Bulgaria.
+9. What display type should I look for? - I'm aware of selecting between IPS and TN (cheaper) display types. As you may think TN provides worse quality than IPS in terms of colors, view angles. IPS display type is one of my key requirements for buying a new notebook. I share a few links as a starting point to understand what are the exact differences:
+    1. [Windows Central: IPS vs TN display](https://www.windowscentral.com/ips-vs-tn-monitors "IPS vs TN"){:target="_blank" rel="noopener"}
+    2. [Display Panel Type Differences Defined - TN vs. IPS, PLS, VA, & More](https://www.gamersnexus.net/guides/1890-panel-comparison-tn-ips-pls-va-crt "IPS vs TN"){:target="_blank" rel="noopener"}
+10. What display size should I look for? - I usually use ~15.6 inch (ca. 40 cm) display size.
+11. What screen resolution should I look for? - A common standard nowadays is Full HD resolution - 1920x1080 pixels.
+9. What OS do I want to use? - Most people use the latest stable version of Windows 10. I do also honor Ubuntu Linux distribution.
+10. Am I willing to pay for OS license? - No. I prefer to use Ubuntu. If you're not a technical person I'd highly recommend to use Windows 10.
+11. Which brand do I choose? - There's no answer to this philosophical question. I have a good experience with [Dell](https://www.dell.com/ "Dell"){:target="_blank" rel="noopener"}, [Asus](https://www.asus.com/ "Asus"){:target="_blank" rel="noopener"}, [Lenovo](https://www.lenovo.com/ "Lenovo"){:target="_blank" rel="noopener"} brands.
+12. How much does a notebook weigh? - I prefer slim books for an entertainment entry-level notebooks. They weigh between 1.5 - 2.5 kg.
+13. Where do I buy it from? - Find the best retailer in your region. Most notebook makers provide options to buy directly from them or from their trusted partners. PC's makers list their partners very often on their official site. I use [Laptop.bg](https://laptop.bg/ "Laptop.BG"){:target="_blank" rel="noopener"} online store in Bulgaria.
 
 I feel responsible to address the needs for playing modern games. I cannot give you exhaustive advice. Definitely you need to buy a notebook with a discrete GPU (separate dedicated video card). The biggest players on GPU market are [Nvidia](https://www.nvidia.com/ "Nvidia"){:target="_blank" rel="noopener"} and [AMD](https://www.amd.com/en/graphics/radeon-rx-graphics "AMD"){:target="_blank" rel="noopener"}. 
 
@@ -108,3 +114,5 @@ If you are a curious geek and want to know more about the hardware specification
 </nav>
 </div>
 </div>
+
+<script defer type="module" src="/assets/headerLink.js"></script>

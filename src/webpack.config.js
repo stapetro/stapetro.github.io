@@ -7,6 +7,7 @@ module.exports = {
   target: 'web',
   entry: {
     pickLuck: './main/pickLuck.main.js',
+    headerLink: './main/headerLink.main.js',
     headerImage: './main/headerImage.mjs',
     mediaElementSetup: './main/mediaElementSetup.js',
     index: './main/index.js',
