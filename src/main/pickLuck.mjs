@@ -78,7 +78,7 @@ class NoteTaker {
     /* eslint-disable max-len */
     return [Note.newNote('Разходете се сред природата. Ще Ви се отрази добре.', undefined), Note.newNote('Пари', undefined),
       Note.newNote('Един човек сам за себе си е нищо. Двама души, които си принадлежат, заедно правят света.', 'Ханс Марголиус'),
-      Note.newNote('Любов', undefined), Note.newNote('Нов приятел', undefined), Note.newNote('Запознанство', undefined), Note.newNote('Успех', undefined),
+      Note.newNote('Любов<br>Love', undefined), Note.newNote('Нов приятел', undefined), Note.newNote('Запознанство<br/>Acquaintance', undefined), Note.newNote('Успех', undefined),
       Note.newNote('Когато се усмихвате на живота си, веднага започвате да живеете живот, за който си струва да се усмихвате.', undefined),
       Note.newNote('Ти си единственият човек на земята, който може да използва твоите възможности.', undefined), Note.newNote('Новина, вест', undefined),
       Note.newNote('Когато изпълваш живота на другите със светлина, не може да не бъдеш озарен и ти!', undefined), Note.newNote('Здраве', undefined),
@@ -113,7 +113,7 @@ class NoteTaker {
       Note.newNote('Трябва да се покачиш на дървото, за да откъснеш плода.', undefined),
       Note.newNote('Със себе си съм имал повече проблеми, отколкото с всеки друг човек.', 'Дуайт Муди'),
       Note.newNote('Няма значение кой казва репликите, а кой суфлира / No matter who says lines, but who prompts.', undefined),
-      Note.newNote('Време Ви е за купон.', undefined),
+      Note.newNote('Време Ви е за купон.<br/>Party', undefined),
       Note.newNote('Ако си мислиш, че знаеш всичко, значи нещо ти убягва.', undefined),
       Note.newNote('Предстои Ви пътуване.', undefined), Note.newNote('Щастие.', undefined),
       Note.newNote('По-добре да бъдеш малка светлинка, отколкото голяма сянка.', undefined),
@@ -304,6 +304,19 @@ class NoteTaker {
       Note.newNote('Почти всички нещастия идват оттам, че непрекъснато се сравняваме с другите.', 'Хорас Браун'),
       Note.newNote('Ревността е страх от превъзходството на другия.', undefined),
       Note.newNote('Мечтите трябва да са толкова големи, че да можем да растем в тях.', 'Джоузи Бисет'),
+      Note.newNote('Чувствата не мамят. Мамят само съставените по тях съждения.', 'Гьоте'),
+      Note.newNote('Възможностите съществуват, за да се възползваме от тях.', undefined),
+      Note.newNote('Никой не се ражда мъдър, сам става такъв.<br/>| Nobody was born wise, they become such by themselves. |', undefined),
+      Note.newNote('Блаженството на тялото е в здравето, блаженството на ума - в знанието.', 'Талес'),
+      Note.newNote('Любовта разрешава всички противоречия.', 'Петър Дънов'),
+      Note.newNote('Приятелството също подхранва дълголетието. Приятелството дава морална сила. То е богатство на ума и сърцето.', 'Петър Димков'),
+      Note.newNote('Никой не е остарял, преди да загуби интерес към живота.', 'Петър Димков'),
+      Note.newNote('Не падай духом. В живота нищо не струва повече от живота, за да загубваш вяра в него.', 'Петър Димков'),
+      Note.newNote('Добрият човек е като онзи, който върви по пясъка, не вдига шум, но оставя следи.', undefined),
+      Note.newNote('Това, което ни прави богати, са нашите действия.', undefined),
+      Note.newNote('Всеки проблем си има своето решение...<br/>просто ви трябва време, за да го откриете.', undefined),
+      Note.newNote('Избягвайте флиртове на работното място.', undefined),
+      Note.newNote('Някои хора се опитват да бъдат велики, а други просто се виждат велики.', undefined),
     ];
     /* eslint-enable max-len */
   }
