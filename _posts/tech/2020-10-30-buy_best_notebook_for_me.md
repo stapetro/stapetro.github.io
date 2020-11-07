@@ -39,7 +39,6 @@ modified_at: 2020-11-09T17:14:26+00:00
 
 # Requirements 
 {: #requirements data-magellan-target="requirements" .docs-heading}
-<!--a class="docs-heading-icon" href="#requirements"></a-->
 You need to answer very important questions :question: before you go to the notebook store. I call them frequently asked questions (FAQ). You can find my answers below. I'd suggest to write down yours on a sheet of paper. :newspaper:
 1. What type of activities will I do?
   * :bowtie: Browse all types of web sites (including social media ones) at the same time.
@@ -116,3 +115,10 @@ If you are a curious geek and want to know more about the hardware specification
 </div>
 
 <script defer type="module" src="/assets/headerLink.js"></script>
+<script defer type="module">
+$(window).on('load', () => {
+  const docContainer = $('div#postTop .cell.medium-9');
+  const headerLink = new MyLibrary.headerLink.HeaderLink(docContainer);
+  headerLink.addLinkTo('h1.docs-heading');
+});
+</script>

@@ -1,9 +1,16 @@
 import $ from 'jquery';
 import {HeaderLink} from './headerLink';
 
-const createDocsHtml = (withHeadings = true) => (
-  /* eslint-disable max-len */
-  `<div class="grid-container fluid">
+describe('add header link', () => {
+  const CONTAINER_ID = 'div#postTop .cell.medium-9';
+  const LOCATOR_DOCS_H1 = 'h1.docs-heading';
+  let docsHTML;
+  let headerLink;
+  let container;
+
+  const createDocsHtml = (withHeadings = true) => (
+    /* eslint-disable max-len */
+    `<div class="grid-container fluid">
     <div class="grid-x" id="postTop">
         <div class="cell medium-9">
             ${withHeadings ? '<h1 id="requirements" data-magellan-target="requirements" class="docs-heading">Requirements</h1>' : ''}
@@ -26,19 +33,11 @@ const createDocsHtml = (withHeadings = true) => (
     </div>
 </div>
 `);
-/* eslint-enable max-len */
+  /* eslint-enable max-len */
 
-let docsHTML;
-
-beforeAll(() => {
-  docsHTML = createDocsHtml();
-});
-
-describe('add header link', () => {
-  const CONTAINER_ID = 'div#postTop .cell.medium-9';
-  const LOCATOR_DOCS_H1 = 'h1.docs-heading';
-  let headerLink;
-  let container;
+  beforeAll(() => {
+    docsHTML = createDocsHtml();
+  });
 
   beforeEach(() => {
     document.body.innerHTML = docsHTML;
@@ -59,6 +58,8 @@ describe('add header link', () => {
       const button = $header.find('button[type=\'button\']');
       expect(button.length).toBe(1);
       expect(button.attr('aria-label')).toInclude($header.text());
+      expect(button.attr('data-clipboard-text'))
+          .toInclude(`#${$header.attr('id')}`);
     });
   };
 
@@ -84,6 +85,7 @@ describe('add header link', () => {
       const $headerEl = $(el);
       const button = $('<button type="button" />');
       button.attr('aria-label', `Test: ${$headerEl.text()}`);
+      button.attr('data-clipboard-text', `#${$headerEl.attr('id')}`);
       $headerEl.append(button);
     });
 
@@ -110,5 +112,84 @@ describe('add header link', () => {
     expect(success).toBeFalse();
     const heading = container.find(LOCATOR_DOCS_H1);
     expect(heading.length).toBe(0);
+  });
+});
+
+describe('copy header link', () => {
+  let fakeTooltipShow;
+  let fakeTooltipHide;
+  let fakeTooltipDestroy;
+  let FakeTooltipClass;
+  let $btn;
+  let copyEvent;
+
+  beforeAll(() => {
+    fakeTooltipShow = jest.fn();
+    fakeTooltipHide = jest.fn();
+    fakeTooltipDestroy = jest.fn();
+    FakeTooltipClass = jest.fn().mockImplementation(() => {
+      return {
+        show: fakeTooltipShow,
+        hide: fakeTooltipHide,
+        destroy: fakeTooltipDestroy,
+      };
+    });
+    window.Foundation = {Tooltip: FakeTooltipClass};
+    $btn = $('<button type="button" />');
+    copyEvent = {
+      action: 'copy', trigger: $btn[0], clearSelection: jest.fn(),
+      text: undefined,
+    };
+  });
+
+  beforeEach(() => {
+    jest.useFakeTimers();
+    fakeTooltipShow.mockClear();
+    fakeTooltipHide.mockClear();
+    fakeTooltipDestroy.mockClear();
+    FakeTooltipClass.mockClear();
+    copyEvent.clearSelection.mockClear();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
+  /**
+   * Asserts copy link button.
+   * @param {string} expectedBtnTitle Expected title value.
+   */
+  const assertCopyBtn = (expectedBtnTitle) => {
+    expect(setTimeout).toHaveBeenCalledTimes(1);
+    expect($btn.attr('title')).toEqual(expectedBtnTitle);
+    expect(FakeTooltipClass.mock.calls.length).toBe(1);
+    const actualBtn = FakeTooltipClass.mock.calls[0][0];
+    expect(actualBtn).toEqual($btn);
+    expect(fakeTooltipShow).toHaveBeenCalledTimes(1);
+
+    jest.runOnlyPendingTimers();
+
+    expect(fakeTooltipHide).toHaveBeenCalledTimes(1);
+    expect(fakeTooltipDestroy).toHaveBeenCalledTimes(1);
+    expect(copyEvent.clearSelection).toHaveBeenCalledTimes(1);
+    expect($btn.attr('title')).toBeUndefined();
+  };
+
+  test('test successful copy event', () => {
+    copyEvent.text = 'java4ever';
+
+    HeaderLink.handleCopySuccess(copyEvent);
+
+    const expectedBtnTitle = 'Copied';
+    assertCopyBtn(expectedBtnTitle);
+  });
+
+  test('test failed copy event', () => {
+    copyEvent.text = undefined;
+
+    HeaderLink.handleCopyErr(copyEvent);
+
+    const expectedBtnTitle = 'Copy Failed';
+    assertCopyBtn(expectedBtnTitle);
   });
 });

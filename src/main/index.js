@@ -52,7 +52,7 @@ import {SmoothScroll} from 'foundation-sites/js/foundation.smoothScroll';
 import {Sticky} from 'foundation-sites/js/foundation.sticky';
 // import {Tabs} from 'foundation-sites/js/foundation.tabs';
 // import {Toggler} from 'foundation-sites/js/foundation.toggler';
-// import {Tooltip} from 'foundation-sites/js/foundation.tooltip';
+import {Tooltip} from 'foundation-sites/js/foundation.tooltip';
 // import {ResponsiveAccordionTabs}
 //   from 'foundation-sites/js/foundation.responsiveAccordionTabs';
 
@@ -75,7 +75,7 @@ Foundation.Move = Move;
 Foundation.Nest = Nest;
 Foundation.Timer = Timer;
 
-// Touch and Triggers previously were almost purely sede effect driven,
+// Touch and Triggers previously were almost purely side effect driven,
 // so no need to add it to Foundation, just init them.
 Touch.init($);
 Triggers.init($, Foundation);
@@ -100,7 +100,7 @@ Foundation.plugin(SmoothScroll, 'SmoothScroll');
 Foundation.plugin(Sticky, 'Sticky');
 // Foundation.plugin(Tabs, 'Tabs');
 // Foundation.plugin(Toggler, 'Toggler');
-// Foundation.plugin(Tooltip, 'Tooltip');
+Foundation.plugin(Tooltip, 'Tooltip');
 // Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
 
 /*

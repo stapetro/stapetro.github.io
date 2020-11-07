@@ -4,6 +4,7 @@
   "description": "Features included in stapetro blog posts.",
   "private": true,
   "dependencies": {
+    "clipboard": "^2.0.6",
     "foundation-sites": "^6.6.3",
     "jquery": "^3.5.1",
     "jquery-backstretch": "^2.1.18",
