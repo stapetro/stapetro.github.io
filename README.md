@@ -9,6 +9,7 @@
     - [Install dependencies](#install-dependencies)
     - [Modernizr JS lib](#modernizr-js-lib)
     - [Build all](#build-all)
+    - [Run a specific test suite](#run-a-specific-test-suite)
     - [Generate jekyll site](#generate-jekyll-site)
     - [Generate favicon](#generate-favicon)
 - [Performance](#performance)
@@ -44,9 +45,14 @@ npx modernizr -c modernizr-config.json -d ../assets/js/modernizr.min.js)
 ## Build all
 Runs [static code analysis](https://eslint.org/), [tests](https://jestjs.io/) and [webpack](https://webpack.js.org/) bundling of [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript) files and [CSS](https://www.w3.org/Style/CSS/Overview.en.html) / [SASS](https://sass-lang.com/) styles.
 ```bash
-(cd src && npm run lint && npm test && npm run bundle)
+(cd src && npm run lint && npm test && npm run bundle && echo 'Successful build')
 # or with test coverage included
-(cd src && npm run lint && npm run test:coverage && npm run bundle)
+(cd src && npm run lint && npm run test:coverage && npm run bundle && echo 'Successful build')
+```
+## Run a specific test suite
+```bash
+$ cd src
+$ npx jest --verbose --runTestsByPath ./main/headerLink.test.js
 ```
 ## Generate jekyll site
 ### Bash
