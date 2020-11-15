@@ -317,6 +317,13 @@ class NoteTaker {
       Note.newNote('Всеки проблем си има своето решение...<br/>просто ви трябва време, за да го откриете.', undefined),
       Note.newNote('Избягвайте флиртове на работното място.', undefined),
       Note.newNote('Някои хора се опитват да бъдат велики, а други просто се виждат велики.', undefined),
+      Note.newNote('Да се ядосваш значи да наказваш себе си за грешките на другите.', 'Оноре дьо Балзак'),
+      Note.newNote('Искаш ли да знаеш кой си? Не питай. Действай!<br>Действието ще те отличи и определи.<br>| Do you want to know who you are? Don’t ask. Act!<br>Action will delineate and define you. |', 'Thomas Jefferson'),
+      Note.newNote('Не става въпрос за картите, които са ти раздадени, а как играеш ръката.<br>| It’s not about the cards you’re dealt, but how you play the hand. |', 'Randy Pausch'),
+      Note.newNote('Думите, които изговаряш, стават къщата, която обитаваш.<br>| The words you speak become the house you live in. |', 'Hafiz'),
+      Note.newNote('Не се подавай на страховете си. Ако го направиш, няма да можеш да разговаряш със сърцето си.<br>| Don’t give in to your fears. If you do, you won’t be able to talk to your heart. |', 'Paulo Coelho'),
+      Note.newNote('Не се страхувай от провал. Не провалът, но ниската цел, е престъплението. Във великите опити, славно е дори да се провалиш.<br>| Don’t fear failure. Not failure, but low aim, is the crime. In great attempts, it is glorious even to fail. |', 'Брус Лий | Bruce Lee'),
+      Note.newNote('Препядствията не блокират пътя. Те са пътя.<br>| Obstacles do not block the path. They are the path. |', 'Zen Proverb'),
     ];
     /* eslint-enable max-len */
   }
