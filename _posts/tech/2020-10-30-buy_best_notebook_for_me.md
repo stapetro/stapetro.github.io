@@ -34,8 +34,10 @@ comments: true
 date: 2020-10-30T17:57:30+00:00
 modified_at: 2020-11-09T17:14:26+00:00
 ---
-<div class="grid-x docs-component-inner" id="postTop">
-<div class="cell medium-9">
+
+<div class="grid-x docs-component-inner" id="postTop" markdown="1">
+
+<div class="cell medium-9" markdown="1">
 
 # Requirements 
 {: #requirements data-magellan-target="requirements" .docs-heading}
@@ -101,17 +103,21 @@ I share directly a notebook model which complies very well to the answers above 
 | Price | ~570 EUR for 12 GB memory size |
 
 If you are a curious geek and want to know more about the hardware specification, your are in luck. :gift_heart: I've generated [a detailed report]({{ url }}{% link pages/Lenovo_IdeaPad_3_15IIL05.HTM %} "Lenovo IdeaPad 3 15IIL05"){:target="_blank" rel="noopener"} with all tiny details.
+
 </div>
 
-<div class="cell auto show-for-medium sticky-container" data-sticky-container>
-<nav class="sticky docs-toc docs-toc-wrap" data-sticky data-anchor="postTop" data-sticky-on="medium" data-margin-top="10">
+<div class="cell auto show-for-medium sticky-container" data-sticky-container markdown="1">
+
+<nav class="sticky docs-toc docs-toc-wrap" data-sticky data-anchor="postTop" data-sticky-on="medium" data-margin-top="10" markdown="1">
 <h4> Table of Contents</h4>
 {: #toc }
 * A markdown unordered list which will be replaced with the ToC
 {:toc .vertical .menu data-magellan="" data-deep-linking="true" data-docs-toc=""}
 <hr class="docs-toc-divider small">
 </nav>
+
 </div>
+
 </div>
 
 <script defer type="module" src="/assets/headerLink.js"></script>
