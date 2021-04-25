@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {NoteViewer} from './pickLuck';
+import {NoteViewer} from './pickLuck.mjs';
 
 const rotateBtn = $('#rotateBtn');
 const notesBox = $('.callout.luckAlert');
