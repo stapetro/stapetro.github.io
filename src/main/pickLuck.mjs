@@ -324,6 +324,17 @@ class NoteTaker {
       Note.newNote('Не се подавай на страховете си. Ако го направиш, няма да можеш да разговаряш със сърцето си.<br>| Don’t give in to your fears. If you do, you won’t be able to talk to your heart. |', 'Paulo Coelho'),
       Note.newNote('Не се страхувай от провал. Не провалът, но ниската цел, е престъплението. Във великите опити, славно е дори да се провалиш.<br>| Don’t fear failure. Not failure, but low aim, is the crime. In great attempts, it is glorious even to fail. |', 'Брус Лий | Bruce Lee'),
       Note.newNote('Препядствията не блокират пътя. Те са пътя.<br>| Obstacles do not block the path. They are the path. |', 'Zen Proverb'),
+      Note.newNote('Всички сме родени за любов. Това е принципът на съществуването и единствената му цел.', 'Бенджамин Дизраели'),
+      Note.newNote('Очакването уморява, но колко по-лошо би било, ако няма какво да се чака.', 'Джордж Бърнард Шоу'),
+      Note.newNote('Ти си специален. Ти си божие чудо. Усмивката е твоя чар, ръцете ти са твоята сила, а душата е огледало на твоите думи! Бъди като водата.', undefined),
+      Note.newNote('Притежаваш най-мощната сила - себе си! Ходи с мъдрите и ще станеш мъдър.', undefined),
+      Note.newNote('Ако не е редно - не го прави, ако не е вярно - не го казвай! Стой далеч от клевети и суета. Пазете хигиена на езика си, тялото, работата и в отношенията.', undefined),
+      Note.newNote('Рая и ада не са места, а състояния! Вярата е вратата. Отворете на доброто, на щастието, на здравето.', undefined),
+      Note.newNote('Деца, уважавайте родителите.<br>Родители, вслушвайте се в децата.<br>Възпитавайте се взаимно с топъл тон, с мили думи, с любов.<br>Семейството е твоя отбор!<br>Уважението е майката.<br>Вярата е бащата.', undefined),
+      Note.newNote('Не се бой от смъртта, но започни да живееш истински.<br>Тук сте, за да бъдете щастливи. Направете се.<br>Животът е според мислите.', undefined),
+      Note.newNote('Привилегия е да си жив!<br>Обичайте се, уважавайте се, без его.<br>Днес е ново начало. Запазете себе си чисти, тяло и дух!', undefined),
+      Note.newNote('Любовта е главния ключ, който отваря вратите на щастието.', undefined),
+      Note.newNote('Понякога е добре да спреш да преследваш щастието и просто да си щастлив.', undefined),
     ];
     /* eslint-enable max-len */
   }
@@ -347,7 +358,7 @@ class NoteTaker {
     note.index = randomIndex + 1;
     note.totalCount = this.totalNotesCount;
     return note;
-  };
+  }
 
   // eslint-disable-next-line require-jsdoc
   static getRandomIndex(arrLength) {
@@ -425,7 +436,7 @@ export class NoteViewer {
     this.rotateBtnClickHandler = this.startRotate;
     this.rotateBtnLabel = 'Старт';
     this.rotateBtnTitle = 'Натисни за следващо късметче';
-  };
+  }
 
   /**
    * Rotate button label.
