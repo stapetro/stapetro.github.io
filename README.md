@@ -65,11 +65,11 @@ $ src/scripts/docker_jekyll.sh serve
 ```
 ### Powershell
 ```powershell
-PS cd <project_root_dir>
+PS> cd <project_root_dir>
 # generate only
-PS .\src\scripts\docker_jekyll.ps1 "Build"
+PS> .\src\scripts\docker_jekyll.ps1 "Build"
 # generate and serve jekyll site
-PS .\src\scripts\docker_jekyll.ps1 "Serve"
+PS> .\src\scripts\docker_jekyll.ps1 "Serve"
 ```
 ## Generate favicon
 Favicons are generated from [code monkey image](assets/img/codemonkey_3149003.jpeg) by free [favicon generator](https://www.favicon-generator.org/) website.
